@@ -2,7 +2,7 @@ import 'package:flutter_flavor/flutter_flavor.dart';
 
 import 'app/app_bindings.dart';
 import 'base/imports.dart';
-import 'screens/splash/splash_screen.dart';
+import 'base/screens/splash/splash_screen.dart';
 
 void main() {
   FlavorConfig(

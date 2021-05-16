@@ -1,14 +1,14 @@
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
-import '../../base/controllers/auth_controller.dart';
-import '../../base/controllers/profile_controller.dart';
-import '../../base/imports.dart';
-import '../../base/models/auth_user.dart';
-import '../../base/widgets/form_field_separator.dart';
-import '../../base/widgets/text_datetime_picker.dart';
-import '../../base/widgets/text_dropdown.dart';
-import '../../base/widgets/text_input.dart';
+import '../../../base/controllers/auth_controller.dart';
+import '../../../base/controllers/profile_controller.dart';
+import '../../../base/imports.dart';
+import '../../../base/models/auth_user.dart';
+import '../../../base/widgets/form_field_separator.dart';
+import '../../../base/widgets/text_datetime_picker.dart';
+import '../../../base/widgets/text_dropdown.dart';
+import '../../../base/widgets/text_input.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
   final _formKey = GlobalKey<FormBuilderState>();

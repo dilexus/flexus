@@ -1,7 +1,7 @@
-import '../../../base/controllers/auth_controller.dart';
-import '../../../base/controllers/login_controller.dart';
-import '../../../base/imports.dart';
-import '../../../screens/profile/profile_screen.dart';
+import '../../../../base/controllers/auth_controller.dart';
+import '../../../../base/controllers/login_controller.dart';
+import '../../../../base/imports.dart';
+import '../../profile/profile_screen.dart';
 
 class HomeDrawer extends StatelessWidget {
   final AuthController appController = Get.find();

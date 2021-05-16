@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../../base/controllers/auth_controller.dart';
-import '../../../base/controllers/login_controller.dart';
-import '../../../base/imports.dart';
+import '../../../../base/controllers/auth_controller.dart';
+import '../../../../base/controllers/login_controller.dart';
+import '../../../../base/imports.dart';
 import '../../home/home_screen.dart';
-import '../../login/widgets/login_slider_master.dart';
+import '../widgets/login_slider_master.dart';
 
 class VerifyEmailSlider extends StatelessWidget {
   final _formKey = GlobalKey<FormBuilderState>();

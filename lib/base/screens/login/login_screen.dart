@@ -1,6 +1,6 @@
-import '../../base/controllers/login_controller.dart';
-import '../../base/imports.dart';
-import '../../screens/login/widgets/login_carousel.dart';
+import '../../../base/controllers/login_controller.dart';
+import '../../../base/imports.dart';
+import 'widgets/login_carousel.dart';
 
 class LoginScreen extends GetView<LoginController> {
   final int initialPage;

@@ -2,10 +2,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:sign_button/constants.dart';
 import 'package:sign_button/create_button.dart';
 
-import '../../../base/controllers/login_controller.dart';
-import '../../../base/imports.dart';
-import '../../../base/widgets/text_input.dart';
-import '../../login/widgets/login_slider_master.dart';
+import '../../../../base/controllers/login_controller.dart';
+import '../../../../base/imports.dart';
+import '../../../../base/widgets/text_input.dart';
+import '../widgets/login_slider_master.dart';
 
 class LoginSlider extends StatelessWidget {
   final _formKey = GlobalKey<FormBuilderState>();
