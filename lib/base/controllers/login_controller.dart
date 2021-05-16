@@ -65,13 +65,10 @@ class LoginController extends GetxController {
         }
       }
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        Get.snackbar(Tr.app_name.tr, "No user found for that email.",
-            snackPosition: SnackPosition.BOTTOM);
-      } else if (e.code == 'wrong-password') {
-        Get.snackbar(Tr.app_name.tr, "Wrong password provided for that user.",
-            snackPosition: SnackPosition.BOTTOM);
-      }
+      _handleError(e);
+    } catch (e) {
+      Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
+      Util.to.logger().e(e);
     }
   }
 
@@ -98,13 +95,7 @@ class LoginController extends GetxController {
           });
       });
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        Get.snackbar(Tr.app_name.tr, "The password provided is too weak.",
-            snackPosition: SnackPosition.BOTTOM);
-      } else if (e.code == 'email-already-in-use') {
-        Get.snackbar(Tr.app_name.tr, "The account already exists for that email.",
-            snackPosition: SnackPosition.BOTTOM);
-      }
+      _handleError(e);
     } catch (e) {
       Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
@@ -141,10 +132,11 @@ class LoginController extends GetxController {
               snackPosition: SnackPosition.BOTTOM);
           break;
       }
+    } on FirebaseAuthException catch (e) {
+      _handleError(e);
     } catch (e) {
+      Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
-      Get.snackbar(Tr.app_name.tr, "Failed to sign in with Facebook.",
-          snackPosition: SnackPosition.BOTTOM);
     }
   }
 
@@ -170,5 +162,33 @@ class LoginController extends GetxController {
     if (userData['dateOfBirth'] != null)
       AuthController.to.authUser.value.dateOfBirth = userData['dateOfBirth'].toDate();
     Util.to.logger().d("Login Success");
+  }
+
+  void _handleError(FirebaseAuthException e) {
+    switch (e.code) {
+      case "user-not-found":
+        Get.snackbar(Tr.app_name.tr, "No user found for that email.",
+            snackPosition: SnackPosition.BOTTOM);
+        break;
+      case "wrong-password":
+        Get.snackbar(Tr.app_name.tr, "Wrong password provided for that user.",
+            snackPosition: SnackPosition.BOTTOM);
+        break;
+      case "weak-password":
+        Get.snackbar(Tr.app_name.tr, "The password provided is too weak.",
+            snackPosition: SnackPosition.BOTTOM);
+        break;
+      case "email-already-in-use":
+        Get.snackbar(Tr.app_name.tr, "The account already exists for that email.",
+            snackPosition: SnackPosition.BOTTOM);
+        break;
+      case "account-exists-with-different-credential":
+        Get.snackbar(Tr.app_name.tr,
+            "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.",
+            snackPosition: SnackPosition.BOTTOM);
+        break;
+      default:
+        Get.snackbar(Tr.app_name.tr, "Sign in failure", snackPosition: SnackPosition.BOTTOM);
+    }
   }
 }
