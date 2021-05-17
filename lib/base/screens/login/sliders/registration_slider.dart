@@ -11,7 +11,7 @@ class RegistrationSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoginSliderMaster(
-        title: Tr.sign_up.tr,
+        title: Trns.sign_up.tr,
         onBackPressed: () {
           LoginController.to.sliderController.jumpToPage(LoginSliders.login);
         },
@@ -31,7 +31,7 @@ class RegistrationSlider extends StatelessWidget {
             child: Column(children: [
               TextInput(
                   name: 'name',
-                  label: Tr.name.tr,
+                  label: Trns.name.tr,
                   icon: Icons.person_outline,
                   obscureText: false,
                   validator: FormBuilderValidators.compose([
@@ -40,7 +40,7 @@ class RegistrationSlider extends StatelessWidget {
                   ])),
               TextInput(
                   name: 'email',
-                  label: Tr.email.tr,
+                  label: Trns.email.tr,
                   icon: Icons.email_outlined,
                   obscureText: false,
                   validator: FormBuilderValidators.compose([
@@ -50,7 +50,7 @@ class RegistrationSlider extends StatelessWidget {
                   ])),
               TextInput(
                   name: 'password',
-                  label: Tr.password.tr,
+                  label: Trns.password.tr,
                   icon: Icons.vpn_key,
                   obscureText: true,
                   validator: FormBuilderValidators.compose([
@@ -60,7 +60,7 @@ class RegistrationSlider extends StatelessWidget {
                   ])),
               TextInput(
                   name: 'confirm_password',
-                  label: Tr.confirm_password.tr,
+                  label: Trns.confirm_password.tr,
                   icon: Icons.vpn_key,
                   obscureText: true,
                   validator: FormBuilderValidators.compose([
@@ -69,7 +69,7 @@ class RegistrationSlider extends StatelessWidget {
                     FormBuilderValidators.minLength(context, 8),
                     (val) {
                       if (_formKey.currentState.fields['password']?.value != val) {
-                        return Tr.warning_passwords_not_matching.tr;
+                        return Trns.warning_passwords_not_matching.tr;
                       }
                       return null;
                     }
@@ -78,7 +78,7 @@ class RegistrationSlider extends StatelessWidget {
               ConstrainedBox(
                 constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
                 child: ElevatedButton(
-                  child: Text(Tr.sign_up.tr),
+                  child: Text(Trns.sign_up.tr),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       var name = _formKey.currentState.fields['name']?.value;
@@ -95,10 +95,10 @@ class RegistrationSlider extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(Tr.already_have_an_account.tr),
+                  Text(Trns.already_have_an_account.tr),
                   InkWell(
                       child: Text(
-                        Tr.sign_in.tr,
+                        Trns.sign_in.tr,
                         style: TextStyle(
                             color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                       ),

@@ -10,7 +10,7 @@ class ForgotPasswordSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoginSliderMaster(
-      title: Tr.reset_password.tr,
+      title: Trns.reset_password.tr,
       onBackPressed: () {
         LoginController.to.sliderController.jumpToPage(LoginSliders.login);
       },
@@ -29,7 +29,7 @@ class ForgotPasswordSlider extends StatelessWidget {
           child: Column(children: [
             TextInput(
                 name: 'email',
-                label: Tr.email.tr,
+                label: Trns.email.tr,
                 icon: Icons.email_outlined,
                 obscureText: false,
                 validator: FormBuilderValidators.compose([
@@ -41,7 +41,7 @@ class ForgotPasswordSlider extends StatelessWidget {
             ConstrainedBox(
               constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
               child: ElevatedButton(
-                child: Text(Tr.reset.tr),
+                child: Text(Trns.reset.tr),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     var email = _formKey.currentState.fields['email']?.value;

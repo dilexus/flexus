@@ -13,7 +13,7 @@ class LoginSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoginSliderMaster(
-      title: Tr.sign_in.tr,
+      title: Trns.sign_in.tr,
       child: Theme(
         data: new ThemeData(
           primaryColor: Util.to.getConfig("primary_color"),
@@ -29,7 +29,7 @@ class LoginSlider extends StatelessWidget {
           child: Column(children: [
             TextInput(
                 name: 'email',
-                label: Tr.email.tr,
+                label: Trns.email.tr,
                 icon: Icons.email_outlined,
                 obscureText: false,
                 validator: FormBuilderValidators.compose([
@@ -39,7 +39,7 @@ class LoginSlider extends StatelessWidget {
                 ])),
             TextInput(
                 name: 'password',
-                label: Tr.password.tr,
+                label: Trns.password.tr,
                 icon: Icons.vpn_key,
                 obscureText: true,
                 validator: FormBuilderValidators.compose([
@@ -50,7 +50,7 @@ class LoginSlider extends StatelessWidget {
             ConstrainedBox(
               constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
               child: ElevatedButton(
-                child: Text(Tr.sign_in.tr),
+                child: Text(Trns.sign_in.tr),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     var email = _formKey.currentState.fields['email']?.value;
@@ -66,10 +66,10 @@ class LoginSlider extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(Tr.dont_have_an_account.tr),
+                Text(Trns.dont_have_an_account.tr),
                 InkWell(
                     child: Text(
-                      Tr.sign_up.tr,
+                      Trns.sign_up.tr,
                       style: TextStyle(
                           color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                     ),
@@ -82,10 +82,10 @@ class LoginSlider extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(Tr.forgot_your_password.tr),
+                Text(Trns.forgot_your_password.tr),
                 InkWell(
                     child: Text(
-                      Tr.reset.tr,
+                      Trns.reset.tr,
                       style: TextStyle(
                           color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                     ),
@@ -95,7 +95,7 @@ class LoginSlider extends StatelessWidget {
               ],
             ),
             SizedBox(height: 32),
-            Text(Tr.or_sign_in_with.tr),
+            Text(Trns.or_sign_in_with.tr),
             SizedBox(height: 32),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

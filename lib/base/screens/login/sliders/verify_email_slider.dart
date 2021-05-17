@@ -6,7 +6,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../../../base/controllers/auth_controller.dart';
 import '../../../../base/controllers/login_controller.dart';
 import '../../../../base/imports.dart';
-import '../../home/home_screen.dart';
+import '../../../../screens/home/home_screen.dart';
 import '../widgets/login_slider_master.dart';
 
 class VerifyEmailSlider extends StatelessWidget {
@@ -17,7 +17,7 @@ class VerifyEmailSlider extends StatelessWidget {
     _callTimer();
     return Obx(
       () => LoginSliderMaster(
-        title: Tr.verify_email.tr,
+        title: Trns.verify_email.tr,
         onBackPressed: AuthController.to.isEmailVerified.value
             ? null
             : () {
@@ -38,13 +38,13 @@ class VerifyEmailSlider extends StatelessWidget {
             key: _formKey,
             child: Column(children: [
               AuthController.to.isEmailVerified.value
-                  ? Text(Tr.email_after_verified.tr, textAlign: TextAlign.center)
-                  : Text(Tr.email_is_being_verified.tr, textAlign: TextAlign.center),
+                  ? Text(Trns.email_after_verified.tr, textAlign: TextAlign.center)
+                  : Text(Trns.email_is_being_verified.tr, textAlign: TextAlign.center),
               SizedBox(height: 32),
               ConstrainedBox(
                 constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
                 child: ElevatedButton(
-                  child: Text(Tr.next.tr),
+                  child: Text(Trns.next.tr),
                   onPressed: AuthController.to.isEmailVerified.value
                       ? () {
                           AuthController.to.authUser.value.isEmailVerified = true;
