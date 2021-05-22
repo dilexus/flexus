@@ -20,6 +20,7 @@ class ProfileScreen extends GetView<ProfileController> {
       appBar: AppBar(title: Text(Trns.profile.tr)),
       body: Obx(
         () => LoadingOverlay(
+          opacity: 0.0,
           isLoading: profileController.isLoading.value,
           child: Builder(builder: (context) {
             return SingleChildScrollView(
