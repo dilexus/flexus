@@ -16,6 +16,7 @@ import 'auth_controller.dart';
 class LoginController extends GetxController {
   static LoginController get to => Get.find();
   CarouselController sliderController = CarouselController();
+  var isLoading = false.obs;
 
   void logout() async {
     final confirmation = await showOkCancelAlertDialog(
@@ -36,6 +37,7 @@ class LoginController extends GetxController {
   }
 
   Future<void> signInWithGoogle() async {
+    isLoading.value = true;
     try {
       UserCredential userCredential;
       final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
@@ -48,10 +50,12 @@ class LoginController extends GetxController {
       final user = userCredential.user;
       if (user != null) {
         Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
+        isLoading.value = false;
         afterLogin().then((value) => Get.off(() => HomeScreen()));
       }
     } catch (e) {
       Util.to.logger().e(e);
+      isLoading.value = false;
       Get.snackbar(Tr.app_name.tr, "Failed to sign in with Google.",
           snackPosition: SnackPosition.BOTTOM);
     }
@@ -59,6 +63,7 @@ class LoginController extends GetxController {
 
   Future<void> signInWithEmailAndPassword(String email, String password) async {
     try {
+      isLoading.value = true;
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
       User user = userCredential.user;
@@ -68,21 +73,26 @@ class LoginController extends GetxController {
         Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
         if (user.emailVerified) {
           AuthController.to.isEmailVerified.value = true;
+          isLoading.value = false;
           afterLogin().then((value) => Get.off(() => HomeScreen()));
         } else {
           await user.sendEmailVerification();
+          isLoading.value = false;
           LoginController.to.sliderController.jumpToPage(LoginSliders.verify_email);
         }
       }
     } on FirebaseAuthException catch (e) {
+      isLoading.value = false;
       _handleError(e);
     } catch (e) {
+      isLoading.value = false;
       Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
   }
 
   Future<void> signUpWithEmailAndPassword(String email, String password, String name) async {
+    isLoading.value = true;
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -94,6 +104,7 @@ class LoginController extends GetxController {
             Util.to.logger().i(user);
             if (user != null) {
               Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
+              isLoading.value = false;
               if (user.emailVerified) {
                 AuthController.to.isEmailVerified.value = true;
                 afterLogin().then((value) => Get.off(() => HomeScreen()));
@@ -105,14 +116,17 @@ class LoginController extends GetxController {
           });
       });
     } on FirebaseAuthException catch (e) {
+      isLoading.value = false;
       _handleError(e);
     } catch (e) {
+      isLoading.value = false;
       Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
   }
 
   Future<void> signInWithFacebook() async {
+    isLoading.value = true;
     try {
       final result = await FacebookLogin().logIn(['email']);
       switch (result.status) {
@@ -122,6 +136,7 @@ class LoginController extends GetxController {
           Util.to.logger().i(user);
           if (user != null) {
             Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
+            isLoading.value = false;
             if (user.emailVerified) {
               AuthController.to.isEmailVerified.value = true;
               afterLogin().then((value) => Get.off(() => HomeScreen()));
@@ -133,18 +148,22 @@ class LoginController extends GetxController {
           break;
         case FacebookLoginStatus.cancelledByUser:
           Util.to.logger().e(result.errorMessage);
+          isLoading.value = false;
           Get.snackbar(Tr.app_name.tr, "Facebook sign in cancelled",
               snackPosition: SnackPosition.BOTTOM);
           break;
         case FacebookLoginStatus.error:
           Util.to.logger().e(result.errorMessage);
+          isLoading.value = false;
           Get.snackbar(Tr.app_name.tr, "Facebook sign in error.",
               snackPosition: SnackPosition.BOTTOM);
           break;
       }
     } on FirebaseAuthException catch (e) {
       _handleError(e);
+      isLoading.value = false;
     } catch (e) {
+      isLoading.value = false;
       Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
