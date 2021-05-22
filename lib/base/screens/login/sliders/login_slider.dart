@@ -112,10 +112,11 @@ class LoginSlider extends StatelessWidget {
                     LoginController.to.signInWithGoogle();
                   },
                 ),
-                SignInButton.mini(
-                  buttonType: ButtonType.apple,
-                  onPressed: () {},
-                ),
+                if (GetPlatform.isIOS)
+                  SignInButton.mini(
+                    buttonType: ButtonType.apple,
+                    onPressed: () {},
+                  ),
               ],
             )
           ]),
