@@ -33,14 +33,14 @@ dependencies:
 
   #UI
   carousel_slider: ^3.0.0
-  flutter_form_builder:  ^6.0.0
+  flutter_form_builder: ^6.0.1
   sign_button: ^2.0.0
   loading_overlay: ^0.3.0
 
   #Firebase
-  firebase_auth: ^1.1.4
-  firebase_core: ^1.1.1
-  cloud_firestore: ^2.1.0
+  firebase_auth: ^1.2.0
+  firebase_core: ^1.2.0
+  cloud_firestore: ^2.2.0
 
   #Auth
   google_sign_in: ^5.0.3

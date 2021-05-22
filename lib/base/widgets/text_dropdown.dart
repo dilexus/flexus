@@ -49,7 +49,7 @@ class TextDropdown extends StatelessWidget {
             .map((val) => DropdownMenuItem(
                   value: val,
                   child: Text(Trns.values
-                      .firstWhere((f) => f.toString() == "Tr.$val", orElse: () => null)
+                      .firstWhere((f) => f.toString() == "Trns.$val", orElse: () => null)
                       .tr),
                 ))
             .toList(),
