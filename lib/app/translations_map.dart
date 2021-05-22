@@ -5,9 +5,9 @@ class TranslationsMap extends BaseTranslations {
   @override
   Map<String, Map<String, String>> get keys => Util.to.getTranslations(super.keys, {
         'en': {
-          Tr.name.val: 'Flexus App',
+          Tr.app_name.val: 'Flexus',
         }
       });
 }
 
-enum Tr { name }
+enum Tr { app_name }

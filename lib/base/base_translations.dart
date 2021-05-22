@@ -4,7 +4,6 @@ class BaseTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en': {
-          Trns.app_name.val: 'Flexus',
           Trns.sign_in.val: 'Sign In',
           Trns.sign_up.val: 'Sign Up',
           Trns.name.val: 'Name',
@@ -39,6 +38,11 @@ class BaseTranslations extends Translations {
           Trns.gender.val: "Gender",
           Trns.date_of_birth.val: "Date of Birth",
           Trns.account_details.val: "Account Details",
+          Trns.ok.val: "OK",
+          Trns.cancel.val: "Cancel",
+          Trns.yes.val: "Yes",
+          Trns.no.val: "No",
+          Trns.logout_confirmation.val: "Are you sure you want to logout?",
         },
         'de': {
           'hello': 'Hallo Welt',
@@ -48,7 +52,6 @@ class BaseTranslations extends Translations {
 
 enum Trns {
   translation,
-  app_name,
   sign_in,
   sign_up,
   name,
@@ -80,7 +83,12 @@ enum Trns {
   select_the_gender,
   gender,
   date_of_birth,
-  account_details
+  account_details,
+  ok,
+  cancel,
+  yes,
+  no,
+  logout_confirmation
 }
 
 extension ExtTr on Trns {

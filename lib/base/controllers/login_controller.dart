@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -16,13 +17,22 @@ class LoginController extends GetxController {
   static LoginController get to => Get.find();
   CarouselController sliderController = CarouselController();
 
-  void logout() {
-    FirebaseAuth.instance.signOut().then((value) {
-      Get.off(LoginScreen(LoginSliders.login));
-      AuthController.to.isEmailVerified.value = false;
-      AuthController.to.authUser = AuthUser().obs;
-      Util.to.logger().i("User logged out");
-    });
+  void logout() async {
+    final confirmation = await showOkCancelAlertDialog(
+      context: Get.context,
+      title: Tr.app_name.val.tr,
+      message: Trns.logout_confirmation.tr,
+      okLabel: Trns.yes.tr,
+      cancelLabel: Trns.no.tr,
+    );
+    if (confirmation == OkCancelResult.ok) {
+      FirebaseAuth.instance.signOut().then((value) {
+        Get.off(() => LoginScreen(LoginSliders.login));
+        AuthController.to.isEmailVerified.value = false;
+        AuthController.to.authUser = AuthUser().obs;
+        Util.to.logger().i("User logged out");
+      });
+    }
   }
 
   Future<void> signInWithGoogle() async {
@@ -42,7 +52,7 @@ class LoginController extends GetxController {
       }
     } catch (e) {
       Util.to.logger().e(e);
-      Get.snackbar(Trns.app_name.tr, "Failed to sign in with Google.",
+      Get.snackbar(Tr.app_name.tr, "Failed to sign in with Google.",
           snackPosition: SnackPosition.BOTTOM);
     }
   }
@@ -67,7 +77,7 @@ class LoginController extends GetxController {
     } on FirebaseAuthException catch (e) {
       _handleError(e);
     } catch (e) {
-      Get.snackbar(Trns.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
   }
@@ -97,7 +107,7 @@ class LoginController extends GetxController {
     } on FirebaseAuthException catch (e) {
       _handleError(e);
     } catch (e) {
-      Get.snackbar(Trns.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
   }
@@ -123,19 +133,19 @@ class LoginController extends GetxController {
           break;
         case FacebookLoginStatus.cancelledByUser:
           Util.to.logger().e(result.errorMessage);
-          Get.snackbar(Trns.app_name.tr, "Facebook sign in cancelled",
+          Get.snackbar(Tr.app_name.tr, "Facebook sign in cancelled",
               snackPosition: SnackPosition.BOTTOM);
           break;
         case FacebookLoginStatus.error:
           Util.to.logger().e(result.errorMessage);
-          Get.snackbar(Trns.app_name.tr, "Facebook sign in error.",
+          Get.snackbar(Tr.app_name.tr, "Facebook sign in error.",
               snackPosition: SnackPosition.BOTTOM);
           break;
       }
     } on FirebaseAuthException catch (e) {
       _handleError(e);
     } catch (e) {
-      Get.snackbar(Trns.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
   }
@@ -143,12 +153,12 @@ class LoginController extends GetxController {
   Future<void> resetPassword(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-      Get.snackbar(Trns.app_name.tr, "Reset password email sent to your email inbox",
+      Get.snackbar(Tr.app_name.tr, "Reset password email sent to your email inbox",
           snackPosition: SnackPosition.BOTTOM);
       LoginController.to.sliderController.jumpToPage(LoginSliders.login);
     } catch (e) {
       Util.to.logger().e(e);
-      Get.snackbar(Trns.app_name.tr, "Failed to reset the password",
+      Get.snackbar(Tr.app_name.tr, "Failed to reset the password",
           snackPosition: SnackPosition.BOTTOM);
     }
   }
@@ -167,23 +177,23 @@ class LoginController extends GetxController {
   void _handleError(FirebaseAuthException e) {
     switch (e.code) {
       case "user-not-found":
-        Util.to.showErrorSnackBar("No user found for that email.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, "No user found for that email.");
         break;
       case "wrong-password":
-        Util.to.showErrorSnackBar("Wrong password provided for that user.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, "Wrong password provided for that user.");
         break;
       case "weak-password":
-        Util.to.showErrorSnackBar("The password provided is too weak.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, "The password provided is too weak.");
         break;
       case "email-already-in-use":
-        Util.to.showErrorSnackBar("The account already exists for that email.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, "The account already exists for that email.");
         break;
       case "account-exists-with-different-credential":
-        Util.to.showErrorSnackBar(
+        Util.to.showErrorSnackBar(Tr.app_name.tr,
             "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.");
         break;
       default:
-        Util.to.showErrorSnackBar("Sign in failure");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, "Sign in failure");
     }
   }
 }

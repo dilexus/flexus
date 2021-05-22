@@ -78,9 +78,8 @@ class Util extends GetxController {
     }
   }
 
-  void showErrorSnackBar(String message) {
-    Get.snackbar(Trns.app_name.tr, message,
-        snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.red, colorText: Colors.white);
+  void showErrorSnackBar(String title, String message) {
+    Get.snackbar(title, message, snackPosition: SnackPosition.BOTTOM, colorText: Colors.red);
   }
 
   Map<String, Map<String, String>> getTranslations(
