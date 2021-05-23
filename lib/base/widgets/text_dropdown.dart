@@ -34,13 +34,14 @@ class TextDropdown extends StatelessWidget {
         name: name,
         initialValue: initialValue,
         decoration: InputDecoration(
+            labelStyle: TextStyle(
+              color: enabled ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
+            ),
             labelText: label,
             contentPadding: EdgeInsets.all(16),
             border: new OutlineInputBorder(borderSide: new BorderSide()),
-            prefixIcon: Icon(
-              icon,
-              color: Theme.of(context).primaryColor,
-            )),
+            prefixIcon: Icon(icon,
+                color: enabled ? Theme.of(context).primaryColor : Theme.of(context).disabledColor)),
         allowClear: allowClear,
         hint: Text(hint),
         validator: validator,
@@ -48,8 +49,8 @@ class TextDropdown extends StatelessWidget {
         items: items
             .map((val) => DropdownMenuItem(
                   value: val,
-                  child: Text(Tr.values
-                      .firstWhere((f) => f.toString() == "Tr.$val", orElse: () => null)
+                  child: Text(Trns.values
+                      .firstWhere((f) => f.toString() == "Trns.$val", orElse: () => null)
                       .tr),
                 ))
             .toList(),

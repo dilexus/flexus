@@ -1,5 +1,5 @@
-import '../../base/controllers/splash_controller.dart';
-import '../../base/imports.dart';
+import '../../../base/controllers/splash_controller.dart';
+import '../../../base/imports.dart';
 
 class SplashScreen extends GetView<SplashController> {
   @override

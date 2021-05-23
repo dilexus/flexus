@@ -1,4 +1,4 @@
-import '../../../base/imports.dart';
+import '../../../../base/imports.dart';
 
 class LoginSliderMaster extends StatelessWidget {
   final Widget child;

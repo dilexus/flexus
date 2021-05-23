@@ -39,7 +39,7 @@ class TextInput extends StatelessWidget {
             border: new OutlineInputBorder(borderSide: new BorderSide()),
             prefixIcon: Icon(
               icon,
-              color: Theme.of(context).primaryColor,
+              color: enabled ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
             )),
         validator: validator,
         obscureText: obscureText,
