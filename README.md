@@ -4,7 +4,7 @@
 
 This project is a starting point for a Flutter application.
 
-This is an Open Source Framework to Create Application With Flutter. This framework can be used to create an app for both Android and iOS Plaforms
+This is an Open Source Framework to create application with Flutter. This framework can be used to create an app for both Android and iOS Platforms
 
 ### Features
 1. Firebase integration support
@@ -30,7 +30,30 @@ This is an Open Source Framework to Create Application With Flutter. This framew
   * firebase_auth
   * firebase_core
   * cloud_firestore
-  * google_sign_in: ^5.0.3
-  * flutter_facebook_login: 3.0.0
+  * google_sign_in
+  * flutter_facebook_login
 
+## License
+Copyright (c) 2021 Chatura Dilan Perera
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Support
 Please contact dilan@dilan.me for support
+
