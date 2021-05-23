@@ -37,13 +37,20 @@ class TextDateTimePicker extends StatelessWidget {
           name: name,
           inputType: inputType,
           format: DateFormat("dd/MM/yyyy"),
+          style: TextStyle(
+              color: enabled
+                  ? Theme.of(context).textTheme.bodyText1.color
+                  : Theme.of(context).disabledColor),
           decoration: InputDecoration(
+              labelStyle: TextStyle(
+                color: enabled ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
+              ),
               labelText: label,
               contentPadding: EdgeInsets.all(16),
               border: new OutlineInputBorder(borderSide: new BorderSide()),
               prefixIcon: Icon(
                 icon,
-                color: Theme.of(context).primaryColor,
+                color: enabled ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
               )),
           initialValue: initialValue,
           validator: validator,

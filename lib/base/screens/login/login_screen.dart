@@ -1,6 +1,8 @@
-import '../../base/controllers/login_controller.dart';
-import '../../base/imports.dart';
-import '../../screens/login/widgets/login_carousel.dart';
+import 'package:loading_overlay/loading_overlay.dart';
+
+import '../../../base/controllers/login_controller.dart';
+import '../../../base/imports.dart';
+import 'widgets/login_carousel.dart';
 
 class LoginScreen extends GetView<LoginController> {
   final int initialPage;
@@ -27,7 +29,10 @@ class LoginScreen extends GetView<LoginController> {
               Expanded(
                   flex: 3,
                   child: Container(
-                    child: LoginCarousel(initialPage: initialPage),
+                    child: Obx(() => LoadingOverlay(
+                        isLoading: controller.isLoading.value,
+                        opacity: 0,
+                        child: LoginCarousel(initialPage: initialPage))),
                   ))
             ],
           ),

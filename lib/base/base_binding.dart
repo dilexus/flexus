@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import '../app/controllers/home_controller.dart';
 import 'controllers/auth_controller.dart';
 import 'controllers/login_controller.dart';
 import 'controllers/splash_controller.dart';
@@ -14,6 +13,5 @@ class BaseBindings implements Bindings {
     Get.put(AuthController());
     Get.put(Util());
     Get.put(LoginController());
-    Get.put(HomeController());
   }
 }

@@ -10,7 +10,7 @@ class ProfileController extends GetxController {
 
   Future<void> updateProfile(GlobalKey<FormBuilderState> formKey) async {
     if (formKey.currentState.validate()) {
-      String name = formKey.currentState.fields['name']?.value;
+      String name = formKey.currentState.fields['name']?.value?.trim();
       String password = formKey.currentState.fields['password']?.value;
       Gender gender =
           formKey.currentState.fields['gender']?.value == "male" ? Gender.male : Gender.female;

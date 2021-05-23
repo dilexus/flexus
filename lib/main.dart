@@ -2,7 +2,7 @@ import 'package:flutter_flavor/flutter_flavor.dart';
 
 import 'app/app_bindings.dart';
 import 'base/imports.dart';
-import 'screens/splash/splash_screen.dart';
+import 'base/screens/splash/splash_screen.dart';
 
 void main() {
   FlavorConfig(
@@ -22,14 +22,13 @@ class Application extends StatelessWidget {
     return FlavorBanner(
       child: GetMaterialApp(
         title: Util.to.getConfig("app_name"),
-        translations: TranslationsMap(),
+        translations: AppTranslations(),
         locale: Locale(Util.to.getConfig("default_language")),
         fallbackLocale: Locale(Util.to.getConfig("default_language")),
         theme: ThemeData(
-          primaryColor: Util.to.getConfig("primary_color"),
-          accentColor: Util.to.getConfig("accent_color"),
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+            primarySwatch: Util.to.getConfig("primary_color"),
+            accentColor: Util.to.getConfig("accent_color"),
+            visualDensity: VisualDensity.adaptivePlatformDensity),
         initialBinding: AppBindings(),
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),

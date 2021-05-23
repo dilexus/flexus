@@ -1,4 +1,4 @@
-package com.dilexus.flexus.flexus
+package com.dilexus.flexus
 
 import io.flutter.embedding.android.FlutterActivity
 
