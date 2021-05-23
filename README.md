@@ -15,23 +15,24 @@ This is an Open Source Framework to Create Application With Flutter. This framew
 4. Login with Google
 5. Logout
 6. My Profile
+7. Easy Translation Support
 
 ## Libraries Used
- #Development
-  get
-  flutter_flavor
-  intl
-  logger
-  collection
-  carousel_slider
-  flutter_form_builder
-  sign_button
-  loading_overlay
-  adaptive_dialog
-  firebase_auth
-  firebase_core
-  cloud_firestore
-  google_sign_in: ^5.0.3
-  flutter_facebook_login: 3.0.0
+
+  * get
+  * flutter_flavor
+  * intl
+  * logger
+  * collection
+  * carousel_slider
+  * flutter_form_builder
+  * sign_button
+  * loading_overlay
+  * adaptive_dialog
+  * firebase_auth
+  * firebase_core
+  * cloud_firestore
+  * google_sign_in: ^5.0.3
+  * flutter_facebook_login: 3.0.0
 
 Please contact dilan@dilan.me for support
