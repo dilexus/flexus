@@ -22,7 +22,7 @@ class Application extends StatelessWidget {
     return FlavorBanner(
       child: GetMaterialApp(
         title: Util.to.getConfig("app_name"),
-        translations: TranslationsMap(),
+        translations: AppTranslations(),
         locale: Locale(Util.to.getConfig("default_language")),
         fallbackLocale: Locale(Util.to.getConfig("default_language")),
         theme: ThemeData(
