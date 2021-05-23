@@ -6,11 +6,14 @@ Flexus UI Framwork
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+This is an Open Source Framework to Create Application With Flutter. This framework can be used to create an app for both Android and iOS Plaforms
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Features
+1. Firebase integration support
+2. Email sign up and sign in
+3. Login with Facebook
+4. Login with Google
+5. Logout
+6. My Profile
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Please contact dilan@dilan.me for support
