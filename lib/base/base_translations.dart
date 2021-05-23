@@ -42,7 +42,20 @@ class BaseTranslations extends Translations {
           Trns.cancel.val: "Cancel",
           Trns.yes.val: "Yes",
           Trns.no.val: "No",
+          Trns.reset_password_sent.val: "Reset password email sent to your email inbox",
           Trns.logout_confirmation.val: "Are you sure you want to logout?",
+          Trns.error_no_user_found.val: "No user found for that email.",
+          Trns.error_wrong_password.val: "Wrong password provided for that user.",
+          Trns.error_weak_password.val: "The password provided is too weak.",
+          Trns.error_account_already_exist.val: "The account already exists for that email.",
+          Trns.error_account_exist_with_same_email.val:
+              "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.",
+          Trns.error_sign_in_failure.val: "Sign in failure",
+          Trns.error_sign_up_failure.val: "Sign in failure",
+          Trns.error_reset_password_failed.val: "Failed to reset the password",
+          Trns.error_google_sign_in_failed.val: "Failed to sign in with Google.",
+          Trns.error_facebook_sign_in_failed.val: "Failed to sign in with Facebook.",
+          Trns.error_facebook_sign_in_canceled.val: "Failed to sign in with Facebook.",
         },
         'de': {
           'hello': 'Hallo Welt',
@@ -88,7 +101,19 @@ enum Trns {
   cancel,
   yes,
   no,
-  logout_confirmation
+  reset_password_sent,
+  logout_confirmation,
+  error_no_user_found,
+  error_wrong_password,
+  error_weak_password,
+  error_account_already_exist,
+  error_account_exist_with_same_email,
+  error_sign_in_failure,
+  error_sign_up_failure,
+  error_reset_password_failed,
+  error_google_sign_in_failed,
+  error_facebook_sign_in_failed,
+  error_facebook_sign_in_canceled
 }
 
 extension ExtTr on Trns {

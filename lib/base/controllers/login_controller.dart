@@ -56,7 +56,7 @@ class LoginController extends GetxController {
     } catch (e) {
       Util.to.logger().e(e);
       isLoading.value = false;
-      Get.snackbar(Tr.app_name.tr, "Failed to sign in with Google.",
+      Get.snackbar(Tr.app_name.tr, Trns.error_google_sign_in_failed.tr,
           snackPosition: SnackPosition.BOTTOM);
     }
   }
@@ -86,7 +86,8 @@ class LoginController extends GetxController {
       _handleError(e);
     } catch (e) {
       isLoading.value = false;
-      Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(Tr.app_name.tr, Trns.error_sign_up_failure.tr,
+          snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
   }
@@ -120,7 +121,8 @@ class LoginController extends GetxController {
       _handleError(e);
     } catch (e) {
       isLoading.value = false;
-      Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(Tr.app_name.tr, Trns.error_sign_up_failure.tr,
+          snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
   }
@@ -149,13 +151,13 @@ class LoginController extends GetxController {
         case FacebookLoginStatus.cancelledByUser:
           Util.to.logger().e(result.errorMessage);
           isLoading.value = false;
-          Get.snackbar(Tr.app_name.tr, "Facebook sign in cancelled",
+          Get.snackbar(Tr.app_name.tr, Trns.error_facebook_sign_in_canceled.tr,
               snackPosition: SnackPosition.BOTTOM);
           break;
         case FacebookLoginStatus.error:
           Util.to.logger().e(result.errorMessage);
           isLoading.value = false;
-          Get.snackbar(Tr.app_name.tr, "Facebook sign in error.",
+          Get.snackbar(Tr.app_name.tr, Trns.error_facebook_sign_in_failed.tr,
               snackPosition: SnackPosition.BOTTOM);
           break;
       }
@@ -164,7 +166,8 @@ class LoginController extends GetxController {
       isLoading.value = false;
     } catch (e) {
       isLoading.value = false;
-      Get.snackbar(Tr.app_name.tr, "Sign up error.", snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(Tr.app_name.tr, Trns.error_sign_up_failure.tr,
+          snackPosition: SnackPosition.BOTTOM);
       Util.to.logger().e(e);
     }
   }
@@ -172,12 +175,12 @@ class LoginController extends GetxController {
   Future<void> resetPassword(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-      Get.snackbar(Tr.app_name.tr, "Reset password email sent to your email inbox",
+      Get.snackbar(Tr.app_name.tr, Trns.reset_password_sent.tr,
           snackPosition: SnackPosition.BOTTOM);
       LoginController.to.sliderController.jumpToPage(LoginSliders.login);
     } catch (e) {
       Util.to.logger().e(e);
-      Get.snackbar(Tr.app_name.tr, "Failed to reset the password",
+      Get.snackbar(Tr.app_name.tr, Trns.error_reset_password_failed.tr,
           snackPosition: SnackPosition.BOTTOM);
     }
   }
@@ -196,23 +199,22 @@ class LoginController extends GetxController {
   void _handleError(FirebaseAuthException e) {
     switch (e.code) {
       case "user-not-found":
-        Util.to.showErrorSnackBar(Tr.app_name.tr, "No user found for that email.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, Trns.error_no_user_found.tr);
         break;
       case "wrong-password":
-        Util.to.showErrorSnackBar(Tr.app_name.tr, "Wrong password provided for that user.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, Trns.error_wrong_password.tr);
         break;
       case "weak-password":
-        Util.to.showErrorSnackBar(Tr.app_name.tr, "The password provided is too weak.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, Trns.error_weak_password.tr);
         break;
       case "email-already-in-use":
-        Util.to.showErrorSnackBar(Tr.app_name.tr, "The account already exists for that email.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, Trns.error_account_already_exist.tr);
         break;
       case "account-exists-with-different-credential":
-        Util.to.showErrorSnackBar(Tr.app_name.tr,
-            "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, Trns.error_account_exist_with_same_email.tr);
         break;
       default:
-        Util.to.showErrorSnackBar(Tr.app_name.tr, "Sign in failure");
+        Util.to.showErrorSnackBar(Tr.app_name.tr, Trns.error_sign_in_failure.tr);
     }
   }
 }
