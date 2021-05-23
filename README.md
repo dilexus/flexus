@@ -4,7 +4,8 @@
 
 This project is a starting point for a Flutter application.
 
-This is an Open Source Framework to create application with Flutter. This framework can be used to create an app for both Android and iOS Platforms
+This is an Open Source Framework to create application with Flutter. This framework can be used to create an apps for both Android and iOS platforms.
+
 
 ### Features
 1. Firebase integration support
