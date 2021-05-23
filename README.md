@@ -1,6 +1,4 @@
-# flexus
-
-Flexus UI Framwork
+Flexus Getting Started Flutter Framwork
 
 ## Getting Started
 
