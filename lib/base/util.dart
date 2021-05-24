@@ -1,3 +1,6 @@
+// Copyright 2021 Chatura Dilan Perera. All rights reserved.
+// Use of this source code is governed by a MIT license
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:get/get.dart';

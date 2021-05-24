@@ -1,3 +1,6 @@
+// Copyright 2021 Chatura Dilan Perera. All rights reserved.
+// Use of this source code is governed by a MIT license
+
 import 'package:flutter/material.dart';
 
 import '../../base/imports.dart';

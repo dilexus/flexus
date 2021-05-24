@@ -1,3 +1,6 @@
+// Copyright 2021 Chatura Dilan Perera. All rights reserved.
+// Use of this source code is governed by a MIT license
+
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:sign_button/constants.dart';
 import 'package:sign_button/create_button.dart';
