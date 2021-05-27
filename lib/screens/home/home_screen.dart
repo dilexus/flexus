@@ -4,11 +4,12 @@
 import 'package:flutter/material.dart';
 
 import '../../base/imports.dart';
+import '../../controllers/home_controller.dart';
 import 'widgets/home_drawer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends SingleScreen<HomeController> {
   @override
-  Widget build(BuildContext context) {
+  Widget create() {
     return Scaffold(
         appBar: AppBar(title: Text(Tr.app_name.tr)),
         drawer: HomeDrawer(),
