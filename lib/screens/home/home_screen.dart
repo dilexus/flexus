@@ -7,7 +7,7 @@ import '../../base/imports.dart';
 import '../../controllers/home_controller.dart';
 import 'widgets/home_drawer.dart';
 
-class HomeScreen extends SingleScreen<HomeController> {
+class HomeScreen extends SuperScreen<HomeController> {
   @override
   Widget create() {
     return Scaffold(

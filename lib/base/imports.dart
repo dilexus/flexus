@@ -7,5 +7,5 @@ export 'package:get/get.dart';
 export '../app/app_translations.dart';
 export '../app/config.dart';
 export '../base/base_translations.dart';
-export '../base/widgets/single_screen.dart';
+export '../base/widgets/super_screen.dart';
 export 'util.dart';
