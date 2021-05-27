@@ -4,8 +4,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../base/controllers/auth_controller.dart';
-import '../../base/models/auth_user.dart';
+import '../../_base/controllers/auth_controller.dart';
+import '../../_base/models/auth_user.dart';
 import '../imports.dart';
 
 class ProfileController extends GetxController {

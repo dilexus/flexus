@@ -3,8 +3,8 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 
-import '../../../../base/controllers/login_controller.dart';
-import '../../../../base/imports.dart';
+import '../../../../_base/controllers/login_controller.dart';
+import '../../../../_base/imports.dart';
 import '../sliders/forgot_password_slider.dart';
 import '../sliders/login_slider.dart';
 import '../sliders/registration_slider.dart';

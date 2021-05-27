@@ -1,7 +1,7 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
-import '../../../../base/imports.dart';
+import '../../../../_base/imports.dart';
 
 class LoginSliderMaster extends StatelessWidget {
   final Widget child;

@@ -6,9 +6,9 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../../../base/controllers/auth_controller.dart';
-import '../../../../base/controllers/login_controller.dart';
-import '../../../../base/imports.dart';
+import '../../../../_base/controllers/auth_controller.dart';
+import '../../../../_base/controllers/login_controller.dart';
+import '../../../../_base/imports.dart';
 import '../../../../screens/home/home_screen.dart';
 import '../widgets/login_slider_master.dart';
 

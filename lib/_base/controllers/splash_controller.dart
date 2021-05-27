@@ -4,9 +4,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import '../../base/controllers/login_controller.dart';
-import '../../base/screens/login/login_screen.dart';
-import '../../base/screens/login/widgets/login_slider_master.dart';
+import '../../_base/controllers/login_controller.dart';
+import '../../_base/screens/login/login_screen.dart';
+import '../../_base/screens/login/widgets/login_slider_master.dart';
 import '../../screens/home/home_screen.dart';
 import '../imports.dart';
 import 'auth_controller.dart';

@@ -3,7 +3,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../base/models/auth_user.dart';
+import '../../_base/models/auth_user.dart';
 import '../imports.dart';
 
 class AuthController extends GetxController {
