@@ -1,10 +1,10 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
-import '../../../_base/controllers/auth_controller.dart';
-import '../../../_base/controllers/login_controller.dart';
-import '../../../_base/imports.dart';
-import '../../../_base/screens/profile/profile_screen.dart';
+import '../../../../_base/controllers/auth_controller.dart';
+import '../../../../_base/controllers/login_controller.dart';
+import '../../../../_base/imports.dart';
+import '../../../../_base/screens/profile/profile_screen.dart';
 
 class HomeDrawer extends StatelessWidget {
   final AuthController appController = Get.find();

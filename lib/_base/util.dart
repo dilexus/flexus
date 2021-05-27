@@ -31,6 +31,10 @@ class Util extends GetxController {
     return FlavorConfig.instance.variables[configName];
   }
 
+  Widget getHomeScreen() {
+    return Util.to.getConfig("home_screen");
+  }
+
   setAuthUserDetails(AuthUser authUser, User user) {
     authUser.uuid = user.uid;
     authUser.name = user.displayName;

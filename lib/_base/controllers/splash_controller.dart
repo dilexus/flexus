@@ -7,7 +7,6 @@ import 'package:firebase_core/firebase_core.dart';
 import '../../_base/controllers/login_controller.dart';
 import '../../_base/screens/login/login_screen.dart';
 import '../../_base/screens/login/widgets/login_slider_master.dart';
-import '../../screens/home/home_screen.dart';
 import '../imports.dart';
 import 'auth_controller.dart';
 
@@ -19,7 +18,7 @@ class SplashController extends GetxController {
       if (user != null) {
         Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
         if (user.emailVerified) {
-          LoginController.to.afterLogin().then((value) => Get.off(() => HomeScreen()));
+          LoginController.to.afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
           Util.to.logger().i("User found, going to home screen");
           Util.to.logger().d(user);
         } else {

@@ -12,7 +12,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../../_base/models/auth_user.dart';
 import '../../_base/screens/login/login_screen.dart';
 import '../../_base/screens/login/widgets/login_slider_master.dart';
-import '../../screens/home/home_screen.dart';
 import '../imports.dart';
 import 'auth_controller.dart';
 
@@ -54,7 +53,7 @@ class LoginController extends GetxController {
       if (user != null) {
         Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
         isLoading.value = false;
-        afterLogin().then((value) => Get.off(() => HomeScreen()));
+        afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
       }
     } catch (e) {
       Util.to.logger().e(e);
@@ -77,7 +76,7 @@ class LoginController extends GetxController {
         if (user.emailVerified) {
           AuthController.to.isEmailVerified.value = true;
           isLoading.value = false;
-          afterLogin().then((value) => Get.off(() => HomeScreen()));
+          afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
         } else {
           await user.sendEmailVerification();
           isLoading.value = false;
@@ -111,7 +110,7 @@ class LoginController extends GetxController {
               isLoading.value = false;
               if (user.emailVerified) {
                 AuthController.to.isEmailVerified.value = true;
-                afterLogin().then((value) => Get.off(() => HomeScreen()));
+                afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
               } else {
                 await user.sendEmailVerification();
                 LoginController.to.sliderController.jumpToPage(LoginSliders.verify_email);
@@ -144,7 +143,7 @@ class LoginController extends GetxController {
             isLoading.value = false;
             if (user.emailVerified) {
               AuthController.to.isEmailVerified.value = true;
-              afterLogin().then((value) => Get.off(() => HomeScreen()));
+              afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
             } else {
               await user.sendEmailVerification();
               LoginController.to.sliderController.jumpToPage(LoginSliders.verify_email);

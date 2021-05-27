@@ -9,7 +9,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../../../_base/controllers/auth_controller.dart';
 import '../../../../_base/controllers/login_controller.dart';
 import '../../../../_base/imports.dart';
-import '../../../../screens/home/home_screen.dart';
 import '../widgets/login_slider_master.dart';
 
 class VerifyEmailSlider extends StatelessWidget {
@@ -53,7 +52,7 @@ class VerifyEmailSlider extends StatelessWidget {
                           AuthController.to.authUser.value.isEmailVerified = true;
                           LoginController.to
                               .afterLogin()
-                              .then((value) => Get.off(() => HomeScreen()));
+                              .then((value) => Get.off(() => Util.to.getHomeScreen()));
                         }
                       : null,
                 ),
