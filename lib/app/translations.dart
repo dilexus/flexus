@@ -4,7 +4,7 @@
 import '../base/base_translations.dart';
 import '../base/imports.dart';
 
-class AppTranslations extends BaseTranslations {
+class Translations extends BaseTranslations {
   @override
   Map<String, Map<String, String>> get keys => Util.to.getTranslations(super.keys, {
         'en': {

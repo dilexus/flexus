@@ -3,7 +3,7 @@
 
 import '../base/base_binding.dart';
 
-class AppBindings extends BaseBindings {
+class Bindings extends BaseBindings {
   @override
   void dependencies() {
     super.dependencies();

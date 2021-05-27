@@ -4,8 +4,8 @@
 export 'package:flutter/material.dart';
 export 'package:get/get.dart';
 
-export '../app/app_translations.dart';
 export '../app/config.dart';
+export '../app/translations.dart' hide Translations;
 export '../base/base_translations.dart';
-export '../base/widgets/super_screen.dart';
+export '../base/widgets/app_screen.dart';
 export 'util.dart';
