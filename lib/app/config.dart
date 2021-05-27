@@ -3,9 +3,12 @@
 
 import 'package:flutter/material.dart';
 
+import '../screens/views/home/home_screen.dart';
+
 class Config {
   get() => {
         "app_name": "Flexus",
+        "home_screen": HomeScreen(),
         "default_language": "en",
         "splash_timer_seconds": 5,
         "primary_color": Colors.pink,
