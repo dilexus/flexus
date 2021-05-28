@@ -8,8 +8,8 @@ class Translations extends BaseTranslations {
   @override
   Map<String, Map<String, String>> get keys => Util.to.getTranslations(super.keys, {
         'en': {
+          Tr.app_name.val: Util.to.getConfig("app_name"),
           Tr.welcome.val: 'Welcome to @name',
-          Tr.app_name.val: 'Flexus',
         }
       });
 }
