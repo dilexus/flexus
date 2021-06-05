@@ -34,6 +34,7 @@ class HomeDrawer extends AppScreen<HomeController> {
           ListTile(
             title: Text(Trns.profile.tr),
             onTap: () {
+              Get.back();
               Get.to(() => ProfileScreen());
             },
           ),

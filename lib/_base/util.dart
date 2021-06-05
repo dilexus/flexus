@@ -59,7 +59,10 @@ class Util extends GetxController {
   String getInitials({String string, int limitTo}) {
     var buffer = StringBuffer();
     var split = string.split(' ');
-    for (var i = 0; i < (limitTo ?? split.length); i++) {
+    if (limitTo > split.length) {
+      limitTo = split.length;
+    }
+    for (var i = 0; i < limitTo; i++) {
       buffer.write(split[i][0]);
     }
 
