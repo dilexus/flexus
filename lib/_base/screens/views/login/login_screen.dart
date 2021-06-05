@@ -3,8 +3,8 @@
 
 import 'package:loading_overlay/loading_overlay.dart';
 
-import '../../../_base/controllers/login_controller.dart';
-import '../../../_base/imports.dart';
+import '../../../../_base/imports.dart';
+import '../../../../_base/screens/controllers/login_controller.dart';
 import 'widgets/login_carousel.dart';
 
 class LoginScreen extends GetView<LoginController> {

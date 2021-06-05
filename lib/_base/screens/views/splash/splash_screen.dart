@@ -1,8 +1,8 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
-import '../../../_base/controllers/splash_controller.dart';
-import '../../../_base/imports.dart';
+import '../../../../_base/imports.dart';
+import '../../../../_base/screens/controllers/splash_controller.dart';
 
 class SplashScreen extends GetView<SplashController> {
   @override

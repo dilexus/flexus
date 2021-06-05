@@ -4,10 +4,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import '../../_base/controllers/login_controller.dart';
-import '../../_base/screens/login/login_screen.dart';
-import '../../_base/screens/login/widgets/login_slider_master.dart';
-import '../imports.dart';
+import '../../../_base/screens/controllers/login_controller.dart';
+import '../../../_base/screens/views/login/login_screen.dart';
+import '../../../_base/screens/views/login/widgets/login_slider_master.dart';
+import '../../imports.dart';
 import 'auth_controller.dart';
 
 class SplashController extends GetxController {

@@ -9,10 +9,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../_base/models/auth_user.dart';
-import '../../_base/screens/login/login_screen.dart';
-import '../../_base/screens/login/widgets/login_slider_master.dart';
-import '../imports.dart';
+import '../../../_base/models/auth_user.dart';
+import '../../../_base/screens/views/login/login_screen.dart';
+import '../../../_base/screens/views/login/widgets/login_slider_master.dart';
+import '../../imports.dart';
 import 'auth_controller.dart';
 
 class LoginController extends GetxController {

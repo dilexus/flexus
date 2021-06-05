@@ -3,9 +3,9 @@
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../../../_base/controllers/login_controller.dart';
-import '../../../../_base/imports.dart';
-import '../../../../_base/widgets/text_input.dart';
+import '../../../../../_base/imports.dart';
+import '../../../../../_base/screens/controllers/login_controller.dart';
+import '../../../../../_base/widgets/text_input.dart';
 import '../widgets/login_slider_master.dart';
 
 class ForgotPasswordSlider extends StatelessWidget {

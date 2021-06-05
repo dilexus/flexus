@@ -4,7 +4,7 @@
 import 'package:flutter_flavor/flutter_flavor.dart';
 
 import '_base/imports.dart' hide Translations, Bindings;
-import '_base/screens/splash/splash_screen.dart';
+import '_base/screens/views/splash/splash_screen.dart';
 import 'app/bindings.dart';
 import 'app/translations.dart';
 
