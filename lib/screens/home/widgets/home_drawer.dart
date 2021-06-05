@@ -1,12 +1,13 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
+import 'package:flexus/_base/screens/login/login_screen.dart';
 import 'package:flexus/_base/widgets/screen_fragment.dart';
 
-import '../../../../_base/imports.dart';
-import '../../../../_base/screens/views/profile/profile_screen.dart';
-import '../../../../_base/services/auth_service.dart';
-import '../../../controllers/home_controller.dart';
+import '../../../_base/imports.dart';
+import '../../../_base/screens/profile/profile_screen.dart';
+import '../../../_base/services/auth_service.dart';
+import '../home_controller.dart';
 
 class HomeDrawer extends ScreenFragment<HomeController> {
   final AuthService appController = Get.find();
@@ -43,7 +44,7 @@ class HomeDrawer extends ScreenFragment<HomeController> {
           ListTile(
             title: Text(Trns.logout.tr),
             onTap: () {
-              AuthService.to.logout();
+              AuthService.to.logout(LoginScreen(LoginSliders.login));
             },
           ),
         ],

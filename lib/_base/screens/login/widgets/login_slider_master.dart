@@ -1,8 +1,8 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
-import '../../../../../_base/imports.dart';
-import '../../../../../_base/screens/controllers/login_controller.dart';
+import '../../../../_base/imports.dart';
+import '../login_controller.dart';
 
 class LoginSliderMaster extends GetView<LoginController> {
   final Widget child;
@@ -45,11 +45,4 @@ class LoginSliderMaster extends GetView<LoginController> {
           ),
         ));
   }
-}
-
-class LoginSliders {
-  static const login = 0;
-  static const registration = 1;
-  static const verify_email = 2;
-  static const forgot_password = 3;
 }

@@ -4,8 +4,8 @@
 import 'package:get/get.dart';
 
 import 'imports.dart';
-import 'screens/controllers/login_controller.dart';
-import 'screens/controllers/splash_controller.dart';
+import 'screens/login/login_controller.dart';
+import 'screens/splash/splash_controller.dart';
 import 'services/auth_service.dart';
 import 'util.dart';
 

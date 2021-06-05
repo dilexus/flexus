@@ -4,8 +4,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flexus/_base/screens/views/login/login_screen.dart';
-import 'package:flexus/_base/screens/views/login/widgets/login_slider_master.dart';
 
 import '../imports.dart';
 import '../models/auth_user.dart';
@@ -43,7 +41,7 @@ class AuthService extends GetxService {
     Util.to.logger().d("Login Success");
   }
 
-  void logout() async {
+  void logout(Widget navigateToScreen) async {
     final confirmation = await showOkCancelAlertDialog(
       context: Get.context,
       title: Tr.app_name.val.tr,
@@ -53,7 +51,7 @@ class AuthService extends GetxService {
     );
     if (confirmation == OkCancelResult.ok) {
       FirebaseAuth.instance.signOut().then((value) {
-        Get.off(() => LoginScreen(LoginSliders.login));
+        Get.off(() => navigateToScreen);
         AuthService.to.isEmailVerified.value = false;
         AuthService.to.authUser = AuthUser().obs;
         Util.to.logger().i("User logged out");

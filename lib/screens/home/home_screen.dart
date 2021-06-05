@@ -3,8 +3,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../_base/imports.dart';
-import '../../controllers/home_controller.dart';
+import '../../_base/imports.dart';
+import 'home_controller.dart';
 import 'widgets/home_drawer.dart';
 
 class HomeScreen extends ScreenMaster<HomeController> {

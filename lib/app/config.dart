@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../screens/views/home/home_screen.dart';
+import '../screens/home/home_screen.dart';
 
 class Config {
   get() => {

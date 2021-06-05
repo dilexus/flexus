@@ -6,9 +6,10 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../../../../_base/imports.dart';
-import '../../../../../_base/screens/controllers/login_controller.dart';
-import '../../../../services/auth_service.dart';
+import '../../../../_base/imports.dart';
+import '../../../services/auth_service.dart';
+import '../login_controller.dart';
+import '../login_screen.dart';
 import '../widgets/login_slider_master.dart';
 
 class VerifyEmailSlider extends GetView<LoginController> {

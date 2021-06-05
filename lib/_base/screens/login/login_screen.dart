@@ -3,8 +3,8 @@
 
 import 'package:loading_overlay/loading_overlay.dart';
 
-import '../../../../_base/imports.dart';
-import '../../../../_base/screens/controllers/login_controller.dart';
+import '../../../_base/imports.dart';
+import 'login_controller.dart';
 import 'widgets/login_carousel.dart';
 
 class LoginScreen extends GetView<LoginController> {
@@ -43,4 +43,11 @@ class LoginScreen extends GetView<LoginController> {
       ),
     );
   }
+}
+
+class LoginSliders {
+  static const login = 0;
+  static const registration = 1;
+  static const verify_email = 2;
+  static const forgot_password = 3;
 }
