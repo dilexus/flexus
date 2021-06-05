@@ -4,7 +4,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import '../../../_base/core/consts/login_sliders.dart';
 import '../../imports.dart';
 import '../../services/auth_service.dart';
 import '../login/login_screen.dart';
