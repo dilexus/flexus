@@ -14,7 +14,7 @@ class ForgotPasswordSlider extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return LoginSliderMaster(
-      title: Trns.reset_password.tr,
+      title: Trns.reset_password.val,
       onBackPressed: () {
         controller.sliderController.jumpToPage(LoginSliders.login);
       },
@@ -33,7 +33,7 @@ class ForgotPasswordSlider extends GetView<LoginController> {
           child: Column(children: [
             TextInput(
                 name: 'email',
-                label: Trns.email.tr,
+                label: Trns.email.val,
                 icon: Icons.email_outlined,
                 obscureText: false,
                 validator: FormBuilderValidators.compose([
@@ -45,7 +45,7 @@ class ForgotPasswordSlider extends GetView<LoginController> {
             ConstrainedBox(
               constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
               child: ElevatedButton(
-                child: Text(Trns.reset.tr),
+                child: Text(Trns.reset.val),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     var email = _formKey.currentState.fields['email']?.value;

@@ -20,7 +20,7 @@ class ProfileScreen extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(Trns.profile.tr)),
+      appBar: AppBar(title: Text(Trns.profile.val)),
       body: Obx(
         () => LoadingOverlay(
           opacity: 0.0,
@@ -53,10 +53,10 @@ class ProfileScreen extends GetView<ProfileController> {
                       /*
                         Account Section
                         */
-                      FormFieldSeparator(Trns.account_details.tr),
+                      FormFieldSeparator(Trns.account_details.val),
                       TextInput(
                           name: 'name',
-                          label: Trns.name.tr,
+                          label: Trns.name.val,
                           initialValue: AuthService.to.authUser?.value?.name,
                           icon: Icons.person_outline,
                           obscureText: false,
@@ -67,7 +67,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       _getGenderTextField(context),
                       TextDateTimePicker(
                         name: 'date_of_birth',
-                        label: Trns.date_of_birth.tr,
+                        label: Trns.date_of_birth.val,
                         inputType: InputType.date,
                         icon: Icons.date_range_outlined,
                         initialValue: AuthService.to.authUser?.value?.dateOfBirth,
@@ -79,10 +79,10 @@ class ProfileScreen extends GetView<ProfileController> {
                       /*
                         Security Section
                         */
-                      FormFieldSeparator(Trns.security.tr),
+                      FormFieldSeparator(Trns.security.val),
                       TextInput(
                           name: 'password',
-                          label: Trns.password.tr,
+                          label: Trns.password.val,
                           icon: Icons.vpn_key,
                           obscureText: true,
                           enabled: AuthService.to.authUser.value.authType == AuthType.email,
@@ -90,14 +90,14 @@ class ProfileScreen extends GetView<ProfileController> {
                             FormBuilderValidators.maxLength(context, 50),
                             (val) {
                               if (val != null && val.length < 8) {
-                                return Trns.warning_minimum_password_length.tr;
+                                return Trns.warning_minimum_password_length.val;
                               }
                               return null;
                             }
                           ])),
                       TextInput(
                           name: 'confirm_password',
-                          label: Trns.confirm_password.tr,
+                          label: Trns.confirm_password.val,
                           icon: Icons.vpn_key,
                           enabled: AuthService.to.authUser.value.authType == AuthType.email,
                           obscureText: true,
@@ -105,7 +105,7 @@ class ProfileScreen extends GetView<ProfileController> {
                             FormBuilderValidators.maxLength(context, 50),
                             (val) {
                               if (_formKey.currentState.fields['password']?.value != val) {
-                                return Trns.warning_passwords_not_matching.tr;
+                                return Trns.warning_passwords_not_matching.val;
                               }
                               return null;
                             }
@@ -114,7 +114,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       ConstrainedBox(
                         constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
                         child: ElevatedButton(
-                          child: Text(Trns.update_profile.tr),
+                          child: Text(Trns.update_profile.val),
                           onPressed: () {
                             profileController.isLoading.value = true;
                             controller.updateProfile(_formKey);
@@ -135,8 +135,8 @@ class ProfileScreen extends GetView<ProfileController> {
   Widget _getGenderTextField(BuildContext context) {
     Gender gender = AuthService.to.authUser?.value?.gender;
     var name = "gender";
-    var label = Trns.gender.tr;
-    var hint = Trns.select_the_gender.tr;
+    var label = Trns.gender.val;
+    var hint = Trns.select_the_gender.val;
     var icon = Icons.attribution_outlined;
     var items = ["male", "female"];
     var enabled = gender != null ? false : true;

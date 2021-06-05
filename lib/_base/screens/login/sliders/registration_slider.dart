@@ -15,7 +15,7 @@ class RegistrationSlider extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return LoginSliderMaster(
-        title: Trns.sign_up.tr,
+        title: Trns.sign_up.val,
         onBackPressed: () {
           controller.sliderController.jumpToPage(LoginSliders.login);
         },
@@ -35,7 +35,7 @@ class RegistrationSlider extends GetView<LoginController> {
             child: Column(children: [
               TextInput(
                   name: 'name',
-                  label: Trns.name.tr,
+                  label: Trns.name.val,
                   icon: Icons.person_outline,
                   obscureText: false,
                   validator: FormBuilderValidators.compose([
@@ -44,7 +44,7 @@ class RegistrationSlider extends GetView<LoginController> {
                   ])),
               TextInput(
                   name: 'email',
-                  label: Trns.email.tr,
+                  label: Trns.email.val,
                   icon: Icons.email_outlined,
                   obscureText: false,
                   validator: FormBuilderValidators.compose([
@@ -54,7 +54,7 @@ class RegistrationSlider extends GetView<LoginController> {
                   ])),
               TextInput(
                   name: 'password',
-                  label: Trns.password.tr,
+                  label: Trns.password.val,
                   icon: Icons.vpn_key,
                   obscureText: true,
                   validator: FormBuilderValidators.compose([
@@ -64,7 +64,7 @@ class RegistrationSlider extends GetView<LoginController> {
                   ])),
               TextInput(
                   name: 'confirm_password',
-                  label: Trns.confirm_password.tr,
+                  label: Trns.confirm_password.val,
                   icon: Icons.vpn_key,
                   obscureText: true,
                   validator: FormBuilderValidators.compose([
@@ -73,7 +73,7 @@ class RegistrationSlider extends GetView<LoginController> {
                     FormBuilderValidators.minLength(context, 8),
                     (val) {
                       if (_formKey.currentState.fields['password']?.value != val) {
-                        return Trns.warning_passwords_not_matching.tr;
+                        return Trns.warning_passwords_not_matching.val;
                       }
                       return null;
                     }
@@ -82,7 +82,7 @@ class RegistrationSlider extends GetView<LoginController> {
               ConstrainedBox(
                 constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
                 child: ElevatedButton(
-                  child: Text(Trns.sign_up.tr),
+                  child: Text(Trns.sign_up.val),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       var name = _formKey.currentState.fields['name']?.value;
@@ -99,10 +99,10 @@ class RegistrationSlider extends GetView<LoginController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(Trns.already_have_an_account.tr),
+                  Text(Trns.already_have_an_account.val),
                   InkWell(
                       child: Text(
-                        Trns.sign_in.tr,
+                        Trns.sign_in.val,
                         style: TextStyle(
                             color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                       ),

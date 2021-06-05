@@ -20,7 +20,7 @@ class VerifyEmailSlider extends GetView<LoginController> {
     _callTimer();
     return Obx(
       () => LoginSliderMaster(
-        title: Trns.verify_email.tr,
+        title: Trns.verify_email.val,
         onBackPressed: AuthService.to.isEmailVerified.value
             ? null
             : () {
@@ -41,13 +41,13 @@ class VerifyEmailSlider extends GetView<LoginController> {
             key: _formKey,
             child: Column(children: [
               AuthService.to.isEmailVerified.value
-                  ? Text(Trns.email_after_verified.tr, textAlign: TextAlign.center)
-                  : Text(Trns.email_is_being_verified.tr, textAlign: TextAlign.center),
+                  ? Text(Trns.email_after_verified.val, textAlign: TextAlign.center)
+                  : Text(Trns.email_is_being_verified.val, textAlign: TextAlign.center),
               SizedBox(height: 32),
               ConstrainedBox(
                 constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
                 child: ElevatedButton(
-                  child: Text(Trns.next.tr),
+                  child: Text(Trns.next.val),
                   onPressed: AuthService.to.isEmailVerified.value
                       ? () {
                           AuthService.to.authUser.value.isEmailVerified = true;

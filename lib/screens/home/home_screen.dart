@@ -11,12 +11,12 @@ class HomeScreen extends ScreenMaster<HomeController> {
   @override
   Widget create() {
     return Scaffold(
-        appBar: AppBar(title: Text(Tr.app_name.tr)),
+        appBar: AppBar(title: Text(Tr.app_name.val)),
         drawer: HomeDrawer(),
         body: Container(
           child: Center(
             child: Text(
-              Tr.welcome.trParams({'name': Tr.app_name.tr}),
+              Tr.welcome.trParams({'name': Tr.app_name.val}),
             ),
           ),
         ));

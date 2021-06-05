@@ -1,18 +1,17 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
-import 'package:flutter/material.dart';
-
+import '../_base/imports.dart';
 import '../screens/home/home_screen.dart';
 
 class Configurations {
   get() => {
-        "app_name": "Flexus",
-        "home_screen": HomeScreen(),
-        "default_language": "en",
-        "splash_timer_seconds": 5,
-        "primary_color": Colors.pink,
-        "accent_color": Colors.pink,
+        Config.app_name.name: "Flexus",
+        Config.home_screen.name: HomeScreen(),
+        Config.default_language.name: "en",
+        Config.splash_timer_seconds.name: 5,
+        Config.primary_color.name: Colors.pink,
+        Config.accent_color.name: Colors.pink,
       };
 }
 

@@ -44,10 +44,10 @@ class AuthService extends GetxService {
   void logout(Widget navigateToScreen) async {
     final confirmation = await showOkCancelAlertDialog(
       context: Get.context,
-      title: Tr.app_name.val.tr,
-      message: Trns.logout_confirmation.tr,
-      okLabel: Trns.yes.tr,
-      cancelLabel: Trns.no.tr,
+      title: Tr.app_name.name.tr,
+      message: Trns.logout_confirmation.val,
+      okLabel: Trns.yes.val,
+      cancelLabel: Trns.no.val,
     );
     if (confirmation == OkCancelResult.ok) {
       FirebaseAuth.instance.signOut().then((value) {

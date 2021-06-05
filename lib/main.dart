@@ -25,13 +25,13 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlavorBanner(
       child: GetMaterialApp(
-        title: Util.to.getConfig("app_name"),
+        title: Config.app_name.val,
         translations: Translations(),
-        locale: Locale(Util.to.getConfig("default_language")),
-        fallbackLocale: Locale(Util.to.getConfig("default_language")),
+        locale: Locale(Config.default_language.val),
+        fallbackLocale: Locale(Config.default_language.val),
         theme: ThemeData(
-            primarySwatch: Util.to.getConfig("primary_color"),
-            accentColor: Util.to.getConfig("accent_color"),
+            primarySwatch: Config.primary_color.val,
+            accentColor: Config.accent_color.val,
             visualDensity: VisualDensity.adaptivePlatformDensity),
         initialBinding: Bindings(),
         debugShowCheckedModeBanner: false,

@@ -51,7 +51,7 @@ class TextDropdown extends StatelessWidget {
                   value: val,
                   child: Text(Trns.values
                       .firstWhere((f) => f.toString() == "Trns.$val", orElse: () => null)
-                      .tr),
+                      .val),
                 ))
             .toList(),
       ),

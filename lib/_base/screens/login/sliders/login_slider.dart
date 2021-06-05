@@ -17,7 +17,7 @@ class LoginSlider extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return LoginSliderMaster(
-      title: Trns.sign_in.tr,
+      title: Trns.sign_in.val,
       child: Theme(
         data: new ThemeData(
           primaryColor: Util.to.getConfig("primary_color"),
@@ -33,7 +33,7 @@ class LoginSlider extends GetView<LoginController> {
           child: Column(children: [
             TextInput(
                 name: 'email',
-                label: Trns.email.tr,
+                label: Trns.email.val,
                 icon: Icons.email_outlined,
                 obscureText: false,
                 validator: FormBuilderValidators.compose([
@@ -43,7 +43,7 @@ class LoginSlider extends GetView<LoginController> {
                 ])),
             TextInput(
                 name: 'password',
-                label: Trns.password.tr,
+                label: Trns.password.val,
                 icon: Icons.vpn_key,
                 obscureText: true,
                 validator: FormBuilderValidators.compose([
@@ -54,7 +54,7 @@ class LoginSlider extends GetView<LoginController> {
             ConstrainedBox(
               constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
               child: ElevatedButton(
-                child: Text(Trns.sign_in.tr),
+                child: Text(Trns.sign_in.val),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     var email = _formKey.currentState.fields['email']?.value;
@@ -70,10 +70,10 @@ class LoginSlider extends GetView<LoginController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(Trns.dont_have_an_account.tr),
+                Text(Trns.dont_have_an_account.val),
                 InkWell(
                     child: Text(
-                      Trns.sign_up.tr,
+                      Trns.sign_up.val,
                       style: TextStyle(
                           color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                     ),
@@ -86,10 +86,10 @@ class LoginSlider extends GetView<LoginController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(Trns.forgot_your_password.tr),
+                Text(Trns.forgot_your_password.val),
                 InkWell(
                     child: Text(
-                      Trns.reset.tr,
+                      Trns.reset.val,
                       style: TextStyle(
                           color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                     ),
@@ -99,7 +99,7 @@ class LoginSlider extends GetView<LoginController> {
               ],
             ),
             SizedBox(height: 32),
-            Text(Trns.or_sign_in_with.tr),
+            Text(Trns.or_sign_in_with.val),
             SizedBox(height: 32),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

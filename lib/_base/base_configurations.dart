@@ -1,11 +1,12 @@
 import '../_base/imports.dart';
 
 extension ExtConfig on Config {
-  String get val {
-    return this.toString();
+  String get name {
+    return this.toString().replaceFirst("Config.", "");
+    ;
   }
 
-  get get {
-    return Util.to.getConfig(this.toString());
+  get val {
+    return Util.to.getConfig(this.toString().replaceFirst("Config.", ""));
   }
 }

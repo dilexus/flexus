@@ -7,58 +7,59 @@ class BaseTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en': {
-          Trns.sign_in.val: 'Sign In',
-          Trns.sign_up.val: 'Sign Up',
-          Trns.name.val: 'Name',
-          Trns.username.val: 'Username',
-          Trns.email.val: 'Email',
-          Trns.password.val: 'Password',
-          Trns.confirm_password.val: "Confirm Password",
-          Trns.dont_have_an_account.val: "Don't have an account? ",
-          Trns.forgot_your_password.val: "Forgot your password? ",
-          Trns.reset.val: "Reset",
-          Trns.or_sign_in_with.val: "or sign in with",
-          Trns.already_have_an_account.val: "Already have an account? ",
-          Trns.email_is_being_verified.val:
+          Trns.sign_in.name: 'Sign In',
+          Trns.sign_up.name: 'Sign Up',
+          Trns.name.name: 'Name',
+          Trns.username.name: 'Username',
+          Trns.email.name: 'Email',
+          Trns.password.name: 'Password',
+          Trns.confirm_password.name: "Confirm Password",
+          Trns.dont_have_an_account.name: "Don't have an account? ",
+          Trns.forgot_your_password.name: "Forgot your password? ",
+          Trns.reset.name: "Reset",
+          Trns.or_sign_in_with.name: "or sign in with",
+          Trns.already_have_an_account.name: "Already have an account? ",
+          Trns.email_is_being_verified.name:
               "Your email is being verified. Please click on the link which is sent to your email and click on Next button once you do so.",
-          Trns.email_after_verified.val:
+          Trns.email_after_verified.name:
               "Thank you for verifying your email. Please click on Next to go in to the app.",
-          Trns.verify_email.val: "Verify Email",
-          Trns.verify.val: "Verify",
-          Trns.next.val: "Next",
-          Trns.logout.val: "Logout",
-          Trns.reset_password.val: "Reset Password",
-          Trns.welcome_name.val: "Welcome @name!",
-          Trns.profile.val: "My Profile",
-          Trns.update_profile.val: "Update Profile",
-          Trns.account.val: "Account",
-          Trns.security.val: "Security",
-          Trns.male.val: "Male",
-          Trns.female.val: "Female",
-          Trns.warning_passwords_not_matching.val: "Password length must be 8 characters long",
-          Trns.warning_minimum_password_length.val: "Password and confirm password is not matching",
-          Trns.select_the_gender.val: "Select the gender",
-          Trns.gender.val: "Gender",
-          Trns.date_of_birth.val: "Date of Birth",
-          Trns.account_details.val: "Account Details",
-          Trns.ok.val: "OK",
-          Trns.cancel.val: "Cancel",
-          Trns.yes.val: "Yes",
-          Trns.no.val: "No",
-          Trns.reset_password_sent.val: "Reset password email sent to your email inbox",
-          Trns.logout_confirmation.val: "Are you sure you want to logout?",
-          Trns.error_no_user_found.val: "No user found for that email.",
-          Trns.error_wrong_password.val: "Wrong password provided for that user.",
-          Trns.error_weak_password.val: "The password provided is too weak.",
-          Trns.error_account_already_exist.val: "The account already exists for that email.",
-          Trns.error_account_exist_with_same_email.val:
+          Trns.verify_email.name: "Verify Email",
+          Trns.verify.name: "Verify",
+          Trns.next.name: "Next",
+          Trns.logout.name: "Logout",
+          Trns.reset_password.name: "Reset Password",
+          Trns.welcome_name.name: "Welcome @name!",
+          Trns.profile.name: "My Profile",
+          Trns.update_profile.name: "Update Profile",
+          Trns.account.name: "Account",
+          Trns.security.name: "Security",
+          Trns.male.name: "Male",
+          Trns.female.name: "Female",
+          Trns.warning_passwords_not_matching.name: "Password length must be 8 characters long",
+          Trns.warning_minimum_password_length.name:
+              "Password and confirm password is not matching",
+          Trns.select_the_gender.name: "Select the gender",
+          Trns.gender.name: "Gender",
+          Trns.date_of_birth.name: "Date of Birth",
+          Trns.account_details.name: "Account Details",
+          Trns.ok.name: "OK",
+          Trns.cancel.name: "Cancel",
+          Trns.yes.name: "Yes",
+          Trns.no.name: "No",
+          Trns.reset_password_sent.name: "Reset password email sent to your email inbox",
+          Trns.logout_confirmation.name: "Are you sure you want to logout?",
+          Trns.error_no_user_found.name: "No user found for that email.",
+          Trns.error_wrong_password.name: "Wrong password provided for that user.",
+          Trns.error_weak_password.name: "The password provided is too weak.",
+          Trns.error_account_already_exist.name: "The account already exists for that email.",
+          Trns.error_account_exist_with_same_email.name:
               "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.",
-          Trns.error_sign_in_failure.val: "Sign in failure",
-          Trns.error_sign_up_failure.val: "Sign in failure",
-          Trns.error_reset_password_failed.val: "Failed to reset the password",
-          Trns.error_google_sign_in_failed.val: "Failed to sign in with Google.",
-          Trns.error_facebook_sign_in_failed.val: "Failed to sign in with Facebook.",
-          Trns.error_facebook_sign_in_canceled.val: "Failed to sign in with Facebook.",
+          Trns.error_sign_in_failure.name: "Sign in failure",
+          Trns.error_sign_up_failure.name: "Sign in failure",
+          Trns.error_reset_password_failed.name: "Failed to reset the password",
+          Trns.error_google_sign_in_failed.name: "Failed to sign in with Google.",
+          Trns.error_facebook_sign_in_failed.name: "Failed to sign in with Facebook.",
+          Trns.error_facebook_sign_in_canceled.name: "Failed to sign in with Facebook.",
         },
         'de': {
           'hello': 'Hallo Welt',
@@ -120,7 +121,7 @@ enum Trns {
 }
 
 extension ExtTr on Trns {
-  String get tr {
+  String get val {
     return this.toString().tr;
   }
 
@@ -128,13 +129,13 @@ extension ExtTr on Trns {
     return this.toString().trParams(params);
   }
 
-  String get val {
+  String get name {
     return this.toString();
   }
 }
 
 extension ExtTrn on Tr {
-  String get tr {
+  String get val {
     return this.toString().tr;
   }
 
@@ -142,7 +143,7 @@ extension ExtTrn on Tr {
     return this.toString().trParams(params);
   }
 
-  String get val {
+  String get name {
     return this.toString();
   }
 }
