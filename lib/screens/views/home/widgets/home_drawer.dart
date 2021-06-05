@@ -1,12 +1,14 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
+import 'package:flexus/_base/widgets/screen_fragment.dart';
+
 import '../../../../_base/imports.dart';
 import '../../../../_base/screens/views/profile/profile_screen.dart';
 import '../../../../_base/services/auth_service.dart';
 import '../../../controllers/home_controller.dart';
 
-class HomeDrawer extends AppScreen<HomeController> {
+class HomeDrawer extends ScreenFragment<HomeController> {
   final AuthService appController = Get.find();
 
   @override
