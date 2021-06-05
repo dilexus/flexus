@@ -13,7 +13,7 @@ void main() {
     //name: "DEVELOP",
     color: Colors.red,
     location: BannerLocation.bottomStart,
-    variables: Config().get(),
+    variables: Configurations().get(),
   );
   Bindings().dependencies();
   runApp(Application());

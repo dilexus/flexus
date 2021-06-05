@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/home/home_screen.dart';
 
-class Config {
+class Configurations {
   get() => {
         "app_name": "Flexus",
         "home_screen": HomeScreen(),
@@ -14,4 +14,13 @@ class Config {
         "primary_color": Colors.pink,
         "accent_color": Colors.pink,
       };
+}
+
+enum Config {
+  app_name,
+  home_screen,
+  default_language,
+  splash_timer_seconds,
+  primary_color,
+  accent_color
 }
