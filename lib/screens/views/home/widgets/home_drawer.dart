@@ -2,28 +2,28 @@
 // Use of this source code is governed by a MIT license
 
 import '../../../../_base/imports.dart';
-import '../../../../_base/screens/controllers/auth_controller.dart';
-import '../../../../_base/screens/controllers/login_controller.dart';
 import '../../../../_base/screens/views/profile/profile_screen.dart';
+import '../../../../_base/services/auth_service.dart';
+import '../../../controllers/home_controller.dart';
 
-class HomeDrawer extends StatelessWidget {
-  final AuthController appController = Get.find();
+class HomeDrawer extends AppScreen<HomeController> {
+  final AuthService appController = Get.find();
 
   @override
-  Widget build(BuildContext context) {
+  Widget create() {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(Get.context).primaryColor,
             ),
             child: Center(
               child: Column(
                 children: [
                   Util.to.getCircularAvatar(appController?.authUser?.value?.profilePicture,
-                      appController?.authUser?.value?.name, context),
+                      appController?.authUser?.value?.name, Get.context),
                   SizedBox(height: 8),
                   Text(Trns.welcome_name.trParams({'name': appController?.authUser?.value?.name}),
                       style: TextStyle(color: Colors.white))
@@ -34,14 +34,13 @@ class HomeDrawer extends StatelessWidget {
           ListTile(
             title: Text(Trns.profile.tr),
             onTap: () {
-              Navigator.pop(context);
               Get.to(() => ProfileScreen());
             },
           ),
           ListTile(
             title: Text(Trns.logout.tr),
             onTap: () {
-              LoginController.to.logout();
+              AuthService.to.logout();
             },
           ),
         ],

@@ -3,40 +3,18 @@
 
 import 'dart:async';
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../_base/models/auth_user.dart';
-import '../../../_base/screens/views/login/login_screen.dart';
 import '../../../_base/screens/views/login/widgets/login_slider_master.dart';
 import '../../imports.dart';
-import 'auth_controller.dart';
+import '../../services/auth_service.dart';
 
 class LoginController extends GetxController {
-  static LoginController get to => Get.find();
   CarouselController sliderController = CarouselController();
   var isLoading = false.obs;
-
-  void logout() async {
-    final confirmation = await showOkCancelAlertDialog(
-      context: Get.context,
-      title: Tr.app_name.val.tr,
-      message: Trns.logout_confirmation.tr,
-      okLabel: Trns.yes.tr,
-      cancelLabel: Trns.no.tr,
-    );
-    if (confirmation == OkCancelResult.ok) {
-      FirebaseAuth.instance.signOut().then((value) {
-        Get.off(() => LoginScreen(LoginSliders.login));
-        AuthController.to.isEmailVerified.value = false;
-        AuthController.to.authUser = AuthUser().obs;
-        Util.to.logger().i("User logged out");
-      });
-    }
-  }
 
   Future<void> signInWithGoogle() async {
     isLoading.value = true;
@@ -51,9 +29,9 @@ class LoginController extends GetxController {
       userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
       final user = userCredential.user;
       if (user != null) {
-        Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
+        Util.to.setAuthUserDetails(AuthService.to.authUser.value, user);
         isLoading.value = false;
-        afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
+        AuthService.to.afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
       }
     } catch (e) {
       Util.to.logger().e(e);
@@ -72,15 +50,15 @@ class LoginController extends GetxController {
       Util.to.logger().i("Use sign in was successful with email");
       Util.to.logger().i(user);
       if (user != null) {
-        Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
+        Util.to.setAuthUserDetails(AuthService.to.authUser.value, user);
         if (user.emailVerified) {
-          AuthController.to.isEmailVerified.value = true;
+          AuthService.to.isEmailVerified.value = true;
           isLoading.value = false;
-          afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
+          AuthService.to.afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
         } else {
           await user.sendEmailVerification();
           isLoading.value = false;
-          LoginController.to.sliderController.jumpToPage(LoginSliders.verify_email);
+          sliderController.jumpToPage(LoginSliders.verify_email);
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -100,24 +78,23 @@ class LoginController extends GetxController {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       User user = userCredential.user;
-      user.updateProfile(displayName: name).then((value) {
-        user = FirebaseAuth.instance.currentUser
-          ..reload().then((value) async {
-            Util.to.logger().i("Use sign up was successful with email");
-            Util.to.logger().i(user);
-            if (user != null) {
-              Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
-              isLoading.value = false;
-              if (user.emailVerified) {
-                AuthController.to.isEmailVerified.value = true;
-                afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
-              } else {
-                await user.sendEmailVerification();
-                LoginController.to.sliderController.jumpToPage(LoginSliders.verify_email);
-              }
+      await user.updateDisplayName(name);
+      user = FirebaseAuth.instance.currentUser
+        ..reload().then((value) async {
+          Util.to.logger().i("Use sign up was successful with email");
+          Util.to.logger().i(user);
+          if (user != null) {
+            Util.to.setAuthUserDetails(AuthService.to.authUser.value, user);
+            isLoading.value = false;
+            if (user.emailVerified) {
+              AuthService.to.isEmailVerified.value = true;
+              AuthService.to.afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
+            } else {
+              await user.sendEmailVerification();
+              sliderController.jumpToPage(LoginSliders.verify_email);
             }
-          });
-      });
+          }
+        });
     } on FirebaseAuthException catch (e) {
       isLoading.value = false;
       _handleError(e);
@@ -139,14 +116,14 @@ class LoginController extends GetxController {
           User user = (await FirebaseAuth.instance.signInWithCredential(credential)).user;
           Util.to.logger().i(user);
           if (user != null) {
-            Util.to.setAuthUserDetails(AuthController.to.authUser.value, user);
+            Util.to.setAuthUserDetails(AuthService.to.authUser.value, user);
             isLoading.value = false;
             if (user.emailVerified) {
-              AuthController.to.isEmailVerified.value = true;
-              afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
+              AuthService.to.isEmailVerified.value = true;
+              AuthService.to.afterLogin().then((value) => Get.off(() => Util.to.getHomeScreen()));
             } else {
               await user.sendEmailVerification();
-              LoginController.to.sliderController.jumpToPage(LoginSliders.verify_email);
+              sliderController.jumpToPage(LoginSliders.verify_email);
             }
           }
           break;
@@ -179,23 +156,12 @@ class LoginController extends GetxController {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       Get.snackbar(Tr.app_name.tr, Trns.reset_password_sent.tr,
           snackPosition: SnackPosition.BOTTOM);
-      LoginController.to.sliderController.jumpToPage(LoginSliders.login);
+      sliderController.jumpToPage(LoginSliders.login);
     } catch (e) {
       Util.to.logger().e(e);
       Get.snackbar(Tr.app_name.tr, Trns.error_reset_password_failed.tr,
           snackPosition: SnackPosition.BOTTOM);
     }
-  }
-
-  Future<void> afterLogin() async {
-    User user = FirebaseAuth.instance.currentUser;
-    Map<String, dynamic> userData = await AuthController.to.getUser(user.uid);
-    if (userData['gender'] != null)
-      AuthController.to.authUser.value.gender =
-          userData['gender'] == "male" ? Gender.male : Gender.female;
-    if (userData['dateOfBirth'] != null)
-      AuthController.to.authUser.value.dateOfBirth = userData['dateOfBirth'].toDate();
-    Util.to.logger().d("Login Success");
   }
 
   void _handleError(FirebaseAuthException e) {

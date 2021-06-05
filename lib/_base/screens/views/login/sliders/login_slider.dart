@@ -10,7 +10,7 @@ import '../../../../../_base/screens/controllers/login_controller.dart';
 import '../../../../../_base/widgets/text_input.dart';
 import '../widgets/login_slider_master.dart';
 
-class LoginSlider extends StatelessWidget {
+class LoginSlider extends GetView<LoginController> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -58,7 +58,7 @@ class LoginSlider extends StatelessWidget {
                   if (_formKey.currentState.validate()) {
                     var email = _formKey.currentState.fields['email']?.value;
                     var password = _formKey.currentState.fields['password']?.value;
-                    LoginController.to.signInWithEmailAndPassword(email, password);
+                    controller.signInWithEmailAndPassword(email, password);
                   } else {
                     Util.to.logger().e("Validation Failed");
                   }
@@ -77,7 +77,7 @@ class LoginSlider extends StatelessWidget {
                           color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                     ),
                     onTap: () {
-                      LoginController.to.sliderController.jumpToPage(LoginSliders.registration);
+                      controller.sliderController.jumpToPage(LoginSliders.registration);
                     }),
               ],
             ),
@@ -93,7 +93,7 @@ class LoginSlider extends StatelessWidget {
                           color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                     ),
                     onTap: () {
-                      LoginController.to.sliderController.jumpToPage(LoginSliders.forgot_password);
+                      controller.sliderController.jumpToPage(LoginSliders.forgot_password);
                     }),
               ],
             ),
@@ -106,13 +106,13 @@ class LoginSlider extends StatelessWidget {
                 SignInButton.mini(
                   buttonType: ButtonType.facebook,
                   onPressed: () {
-                    LoginController.to.signInWithFacebook();
+                    controller.signInWithFacebook();
                   },
                 ),
                 SignInButton.mini(
                   buttonType: ButtonType.google,
                   onPressed: () {
-                    LoginController.to.signInWithGoogle();
+                    controller.signInWithGoogle();
                   },
                 ),
                 if (GetPlatform.isIOS)

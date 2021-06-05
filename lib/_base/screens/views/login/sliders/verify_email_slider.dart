@@ -7,11 +7,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import '../../../../../_base/imports.dart';
-import '../../../../../_base/screens/controllers/auth_controller.dart';
 import '../../../../../_base/screens/controllers/login_controller.dart';
+import '../../../../services/auth_service.dart';
 import '../widgets/login_slider_master.dart';
 
-class VerifyEmailSlider extends StatelessWidget {
+class VerifyEmailSlider extends GetView<LoginController> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -20,10 +20,10 @@ class VerifyEmailSlider extends StatelessWidget {
     return Obx(
       () => LoginSliderMaster(
         title: Trns.verify_email.tr,
-        onBackPressed: AuthController.to.isEmailVerified.value
+        onBackPressed: AuthService.to.isEmailVerified.value
             ? null
             : () {
-                LoginController.to.sliderController.animateToPage(LoginSliders.login);
+                controller.sliderController.animateToPage(LoginSliders.login);
               },
         child: Theme(
           data: new ThemeData(
@@ -39,7 +39,7 @@ class VerifyEmailSlider extends StatelessWidget {
           child: FormBuilder(
             key: _formKey,
             child: Column(children: [
-              AuthController.to.isEmailVerified.value
+              AuthService.to.isEmailVerified.value
                   ? Text(Trns.email_after_verified.tr, textAlign: TextAlign.center)
                   : Text(Trns.email_is_being_verified.tr, textAlign: TextAlign.center),
               SizedBox(height: 32),
@@ -47,10 +47,10 @@ class VerifyEmailSlider extends StatelessWidget {
                 constraints: BoxConstraints.tightFor(width: Get.width, height: 48),
                 child: ElevatedButton(
                   child: Text(Trns.next.tr),
-                  onPressed: AuthController.to.isEmailVerified.value
+                  onPressed: AuthService.to.isEmailVerified.value
                       ? () {
-                          AuthController.to.authUser.value.isEmailVerified = true;
-                          LoginController.to
+                          AuthService.to.authUser.value.isEmailVerified = true;
+                          AuthService.to
                               .afterLogin()
                               .then((value) => Get.off(() => Util.to.getHomeScreen()));
                         }
@@ -70,8 +70,8 @@ class VerifyEmailSlider extends StatelessWidget {
       var user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         if (user.emailVerified) {
-          AuthController.to.authUser.value.isEmailVerified = true;
-          AuthController.to.isEmailVerified.value = true;
+          AuthService.to.authUser.value.isEmailVerified = true;
+          AuthService.to.isEmailVerified.value = true;
           timer.cancel();
         }
       }

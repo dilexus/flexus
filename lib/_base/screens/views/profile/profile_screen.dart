@@ -6,12 +6,12 @@ import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../../_base/imports.dart';
 import '../../../../_base/models/auth_user.dart';
-import '../../../../_base/screens/controllers/auth_controller.dart';
 import '../../../../_base/screens/controllers/profile_controller.dart';
 import '../../../../_base/widgets/form_field_separator.dart';
 import '../../../../_base/widgets/text_datetime_picker.dart';
 import '../../../../_base/widgets/text_dropdown.dart';
 import '../../../../_base/widgets/text_input.dart';
+import '../../../services/auth_service.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
   final _formKey = GlobalKey<FormBuilderState>();
@@ -44,10 +44,10 @@ class ProfileScreen extends GetView<ProfileController> {
                     key: _formKey,
                     child: Column(children: [
                       SizedBox(height: 8),
-                      Util.to.getCircularAvatar(AuthController.to?.authUser?.value?.profilePicture,
-                          AuthController.to.authUser?.value?.name, context),
+                      Util.to.getCircularAvatar(AuthService.to?.authUser?.value?.profilePicture,
+                          AuthService.to.authUser?.value?.name, context),
                       SizedBox(height: 8),
-                      Text(AuthController.to.authUser?.value?.email,
+                      Text(AuthService.to.authUser?.value?.email,
                           style: TextStyle(color: Colors.black)),
                       SizedBox(height: 16),
                       /*
@@ -57,7 +57,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       TextInput(
                           name: 'name',
                           label: Trns.name.tr,
-                          initialValue: AuthController.to.authUser?.value?.name,
+                          initialValue: AuthService.to.authUser?.value?.name,
                           icon: Icons.person_outline,
                           obscureText: false,
                           validator: FormBuilderValidators.compose([
@@ -70,9 +70,8 @@ class ProfileScreen extends GetView<ProfileController> {
                         label: Trns.date_of_birth.tr,
                         inputType: InputType.date,
                         icon: Icons.date_range_outlined,
-                        initialValue: AuthController.to.authUser?.value?.dateOfBirth,
-                        enabled:
-                            AuthController.to.authUser?.value?.dateOfBirth != null ? false : true,
+                        initialValue: AuthService.to.authUser?.value?.dateOfBirth,
+                        enabled: AuthService.to.authUser?.value?.dateOfBirth != null ? false : true,
                         validator: FormBuilderValidators.compose(
                             [FormBuilderValidators.required(context)]),
                       ),
@@ -86,7 +85,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           label: Trns.password.tr,
                           icon: Icons.vpn_key,
                           obscureText: true,
-                          enabled: AuthController.to.authUser.value.authType == AuthType.email,
+                          enabled: AuthService.to.authUser.value.authType == AuthType.email,
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.maxLength(context, 50),
                             (val) {
@@ -100,7 +99,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           name: 'confirm_password',
                           label: Trns.confirm_password.tr,
                           icon: Icons.vpn_key,
-                          enabled: AuthController.to.authUser.value.authType == AuthType.email,
+                          enabled: AuthService.to.authUser.value.authType == AuthType.email,
                           obscureText: true,
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.maxLength(context, 50),
@@ -134,7 +133,7 @@ class ProfileScreen extends GetView<ProfileController> {
   }
 
   Widget _getGenderTextField(BuildContext context) {
-    Gender gender = AuthController.to.authUser?.value?.gender;
+    Gender gender = AuthService.to.authUser?.value?.gender;
     var name = "gender";
     var label = Trns.gender.tr;
     var hint = Trns.select_the_gender.tr;

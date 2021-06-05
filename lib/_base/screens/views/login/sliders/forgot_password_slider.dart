@@ -8,14 +8,14 @@ import '../../../../../_base/screens/controllers/login_controller.dart';
 import '../../../../../_base/widgets/text_input.dart';
 import '../widgets/login_slider_master.dart';
 
-class ForgotPasswordSlider extends StatelessWidget {
+class ForgotPasswordSlider extends GetView<LoginController> {
   final _formKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
     return LoginSliderMaster(
       title: Trns.reset_password.tr,
       onBackPressed: () {
-        LoginController.to.sliderController.jumpToPage(LoginSliders.login);
+        controller.sliderController.jumpToPage(LoginSliders.login);
       },
       child: Theme(
         data: new ThemeData(
@@ -48,7 +48,7 @@ class ForgotPasswordSlider extends StatelessWidget {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     var email = _formKey.currentState.fields['email']?.value;
-                    LoginController.to.resetPassword(email);
+                    controller.resetPassword(email);
                   } else {
                     Util.to.logger().e("Validation Failed");
                   }

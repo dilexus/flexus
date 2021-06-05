@@ -2,8 +2,9 @@
 // Use of this source code is governed by a MIT license
 
 import '../../../../../_base/imports.dart';
+import '../../../../../_base/screens/controllers/login_controller.dart';
 
-class LoginSliderMaster extends StatelessWidget {
+class LoginSliderMaster extends GetView<LoginController> {
   final Widget child;
   final String title;
   final Function onBackPressed;

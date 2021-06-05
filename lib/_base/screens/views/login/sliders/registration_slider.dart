@@ -3,12 +3,12 @@
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../../../../_base/screens/controllers/login_controller.dart';
 import '../../../../../_base/imports.dart';
+import '../../../../../_base/screens/controllers/login_controller.dart';
 import '../../../../../_base/widgets/text_input.dart';
 import '../widgets/login_slider_master.dart';
 
-class RegistrationSlider extends StatelessWidget {
+class RegistrationSlider extends GetView<LoginController> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -16,7 +16,7 @@ class RegistrationSlider extends StatelessWidget {
     return LoginSliderMaster(
         title: Trns.sign_up.tr,
         onBackPressed: () {
-          LoginController.to.sliderController.jumpToPage(LoginSliders.login);
+          controller.sliderController.jumpToPage(LoginSliders.login);
         },
         child: Theme(
           data: new ThemeData(
@@ -87,7 +87,7 @@ class RegistrationSlider extends StatelessWidget {
                       var name = _formKey.currentState.fields['name']?.value;
                       var email = _formKey.currentState.fields['email']?.value;
                       var password = _formKey.currentState.fields['password']?.value;
-                      LoginController.to.signUpWithEmailAndPassword(email, password, name);
+                      controller.signUpWithEmailAndPassword(email, password, name);
                     } else {
                       Util.to.logger().e("Validation Failed");
                     }
@@ -106,7 +106,7 @@ class RegistrationSlider extends StatelessWidget {
                             color: Util.to.getConfig("primary_color"), fontWeight: FontWeight.bold),
                       ),
                       onTap: () {
-                        LoginController.to.sliderController.jumpToPage(LoginSliders.login);
+                        controller.sliderController.jumpToPage(LoginSliders.login);
                       }),
                 ],
               ),
