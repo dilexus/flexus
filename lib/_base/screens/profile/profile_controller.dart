@@ -1,7 +1,10 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import '../../imports.dart';
@@ -10,6 +13,7 @@ import '../../services/auth_service.dart';
 
 class ProfileController extends GetxController {
   var isLoading = false.obs;
+  Rx<File> imageFile = File("").obs;
 
   Future<void> updateProfile(GlobalKey<FormBuilderState> formKey) async {
     if (formKey.currentState.validate()) {
@@ -25,10 +29,21 @@ class ProfileController extends GetxController {
         await user.updatePassword(password);
       }
 
-      user.updateDisplayName(name);
+      if (imageFile?.value != null && imageFile?.value?.path != "") {
+        var firebaseStorageRef = FirebaseStorage.instance
+            .ref()
+            .child('user/profile/${AuthService.to.authUser.value.uuid}.jpg');
+        await firebaseStorageRef.putFile(imageFile.value);
+        String photoURL = await firebaseStorageRef.getDownloadURL();
+        await user.updatePhotoURL(photoURL);
+      }
+
+      await user.updateDisplayName(name);
       user = FirebaseAuth.instance.currentUser
         ..reload().then((value) {
           AuthService.to.authUser.value.name = name;
+          AuthService.to.authUser.value.profilePicture = user.photoURL;
+          imageFile.value = File("");
           if (AuthService.to.authUser.value.gender == null ||
               AuthService.to.authUser.value.dateOfBirth == null) {
             AuthService.to.updateUser(AuthService.to.authUser.value.uuid, gender, dateOfBirth);

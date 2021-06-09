@@ -1,7 +1,6 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -42,20 +41,15 @@ class AuthService extends GetxService {
   }
 
   void logout(Widget navigateToScreen) async {
-    final confirmation = await showOkCancelAlertDialog(
-      context: Get.context,
-      title: Tr.app_name.name.tr,
-      message: Trns.logout_confirmation.val,
-      okLabel: Trns.yes.val,
-      cancelLabel: Trns.no.val,
-    );
-    if (confirmation == OkCancelResult.ok) {
-      FirebaseAuth.instance.signOut().then((value) {
-        Get.off(() => navigateToScreen);
-        AuthService.to.isEmailVerified.value = false;
-        AuthService.to.authUser = AuthUser().obs;
-        Util.to.logger().i("User logged out");
-      });
-    }
+    Util.to.showYesNoDialog(
+        message: Trns.logout_confirmation.val,
+        onYesPressed: () {
+          FirebaseAuth.instance.signOut().then((value) {
+            Get.off(navigateToScreen);
+            AuthService.to.isEmailVerified.value = false;
+            AuthService.to.authUser = AuthUser().obs;
+            Util.to.logger().i("User logged out");
+          });
+        });
   }
 }

@@ -1,7 +1,11 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
+import 'dart:io';
+
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../_base/imports.dart';
@@ -16,6 +20,7 @@ import 'profile_controller.dart';
 class ProfileScreen extends GetView<ProfileController> {
   final _formKey = GlobalKey<FormBuilderState>();
   final ProfileController profileController = Get.put(ProfileController());
+  final imagePicker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +49,34 @@ class ProfileScreen extends GetView<ProfileController> {
                     key: _formKey,
                     child: Column(children: [
                       SizedBox(height: 8),
-                      Util.to.getCircularAvatar(AuthService.to?.authUser?.value?.profilePicture,
-                          AuthService.to.authUser?.value?.name, context),
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Obx(
+                            () => Util.to.getCircularAvatar(
+                                AuthService.to?.authUser?.value?.profilePicture,
+                                AuthService.to.authUser?.value?.name,
+                                context,
+                                imageFile: controller?.imageFile?.value),
+                          ),
+                          if (AuthService.to.authUser.value.authType == AuthType.email)
+                            Padding(
+                              padding: EdgeInsets.only(left: 100),
+                              child: ElevatedButton(
+                                onPressed: _readPhoto,
+                                child: Icon(
+                                  Icons.add_a_photo,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  shape: CircleBorder(),
+                                  primary: Theme.of(Get.context).primaryColor,
+                                ),
+                              ),
+                            )
+                        ],
+                      ),
                       SizedBox(height: 8),
                       Text(AuthService.to.authUser?.value?.email,
                           style: TextStyle(color: Colors.black)),
@@ -162,5 +193,86 @@ class ProfileScreen extends GetView<ProfileController> {
           enabled: enabled,
           validator: validator);
     }
+  }
+
+  Future _readPhoto() async {
+    Util.to.showOKDialog(
+        textOK: Trns.cancel.val,
+        content: Column(
+          children: [
+            Text("Please select the source"),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    ConstrainedBox(
+                      constraints: BoxConstraints(minWidth: 64, minHeight: 64),
+                      child: ElevatedButton(
+                        onPressed: () => _getImage(ImageSource.camera),
+                        child: Icon(
+                          Icons.camera_alt,
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          primary: Theme.of(Get.context).primaryColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text("Camera")
+                  ],
+                ),
+                SizedBox(width: 32),
+                Column(
+                  children: [
+                    ConstrainedBox(
+                      constraints: BoxConstraints(minWidth: 64, minHeight: 64),
+                      child: ElevatedButton(
+                        onPressed: () => _getImage(ImageSource.gallery),
+                        child: Icon(
+                          Icons.photo,
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          primary: Theme.of(Get.context).primaryColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text("Gallery")
+                  ],
+                )
+              ],
+            )
+          ],
+        ));
+  }
+
+  _getImage(ImageSource imageSource) async {
+    Get.back();
+    final pickedFile = await imagePicker.getImage(source: imageSource);
+    File croppedFile = await ImageCropper.cropImage(
+        sourcePath: pickedFile.path,
+        maxWidth: 512,
+        maxHeight: 512,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+        ],
+        androidUiSettings: AndroidUiSettings(
+            toolbarTitle: "Crop Image",
+            toolbarColor: Colors.black,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.square,
+            lockAspectRatio: true),
+        iosUiSettings: IOSUiSettings(
+          minimumAspectRatio: 1.0,
+        ));
+    controller.imageFile.value = File(croppedFile.path);
   }
 }
