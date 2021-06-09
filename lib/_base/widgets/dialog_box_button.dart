@@ -1,4 +1,4 @@
-import 'package:flexus/_base/imports.dart';
+import '../../_base/imports.dart';
 
 class DialogBoxButton extends StatelessWidget {
   final String buttonText;
