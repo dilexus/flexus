@@ -3,7 +3,6 @@ import '../_base/imports.dart';
 extension ExtConfig on Config {
   String get name {
     return this.toString().replaceFirst("Config.", "");
-    ;
   }
 
   get val {
