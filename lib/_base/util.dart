@@ -13,6 +13,7 @@ import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
 import '../_base/widgets/dialog_box_button.dart';
+import 'enums/build.dart';
 import 'imports.dart';
 import 'models/auth_user.dart';
 
@@ -179,5 +180,18 @@ class Util extends GetxController {
     Directory dir = await getApplicationDocumentsDirectory();
     String pathName = path.join(dir.path, filename);
     return File(pathName);
+  }
+
+  Build getBuild() {
+    switch (FlavorConfig.instance.name) {
+      case "Internal":
+        return Build.internal;
+      case "Alpha":
+        return Build.alpha;
+      case "Alpha":
+        return Build.beta;
+      default:
+        return Build.prod;
+    }
   }
 }

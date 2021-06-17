@@ -8,7 +8,7 @@ import 'app/app.dart';
 
 void main() {
   FlavorConfig(
-    //name: "DEVELOP",
+    name: "Internal",
     color: Colors.red,
     location: BannerLocation.bottomStart,
     variables: Configurations().get(),
