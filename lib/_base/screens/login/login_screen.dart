@@ -7,13 +7,13 @@ import '../../../_base/imports.dart';
 import 'login_controller.dart';
 import 'widgets/login_carousel.dart';
 
-class LoginScreen extends GetView<LoginController> {
+class LoginScreen extends ScreenMaster<LoginController> {
   final int initialPage;
 
   LoginScreen(this.initialPage);
 
   @override
-  Widget build(BuildContext context) {
+  Widget create() {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,

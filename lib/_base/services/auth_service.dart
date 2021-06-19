@@ -3,8 +3,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../app/init.dart';
 
+import '../../app/init.dart';
 import '../imports.dart';
 import '../models/auth_user.dart';
 

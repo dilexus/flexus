@@ -4,10 +4,9 @@
 import '../../../_base/imports.dart';
 import 'splash_controller.dart';
 
-class SplashScreen extends GetView<SplashController> {
+class SplashScreen extends ScreenMaster<SplashController> {
   @override
-  Widget build(BuildContext context) {
-    controller.init();
+  Widget create() {
     return Scaffold(
       body: Container(
         child: Center(
@@ -18,5 +17,11 @@ class SplashScreen extends GetView<SplashController> {
         ),
       ),
     );
+  }
+
+  @override
+  void onStart() {
+    controller.init();
+    super.onStart();
   }
 }

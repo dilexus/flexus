@@ -17,13 +17,13 @@ import '../../../_base/widgets/text_input.dart';
 import '../../services/auth_service.dart';
 import 'profile_controller.dart';
 
-class ProfileScreen extends GetView<ProfileController> {
+class ProfileScreen extends ScreenMaster<ProfileController> {
   final _formKey = GlobalKey<FormBuilderState>();
   final ProfileController profileController = Get.put(ProfileController());
   final imagePicker = ImagePicker();
 
   @override
-  Widget build(BuildContext context) {
+  Widget create() {
     return Scaffold(
       appBar: AppBar(title: Text(Trns.profile.val)),
       body: Obx(
