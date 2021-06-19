@@ -2,8 +2,8 @@
 // Use of this source code is governed by a MIT license
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
+import '../../../app/init.dart';
 import '../../imports.dart';
 import '../../services/auth_service.dart';
 import '../login/login_screen.dart';
@@ -36,8 +36,8 @@ class SplashController extends GetxController {
     Get.off(() => LoginScreen(LoginSliders.login));
   }
 
-  init() {
-    Firebase.initializeApp();
+  init() async {
+    await Init.splashScreenInit();
     Util.to.logger().i("Splash Screen Loaded.");
     _startTimer();
   }

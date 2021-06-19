@@ -3,6 +3,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../../app/init.dart';
 
 import '../imports.dart';
 import '../models/auth_user.dart';
@@ -37,6 +38,7 @@ class AuthService extends GetxService {
           userData['gender'] == "male" ? Gender.male : Gender.female;
     if (userData['dateOfBirth'] != null)
       AuthService.to.authUser.value.dateOfBirth = userData['dateOfBirth'].toDate();
+    await Init.afterAuthentication();
     Util.to.logger().d("Login Success");
   }
 

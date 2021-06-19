@@ -5,6 +5,7 @@ import 'package:flutter_flavor/flutter_flavor.dart';
 
 import '_base/imports.dart';
 import 'app/app.dart';
+import 'app/init.dart';
 
 void main() {
   FlavorConfig(
@@ -13,6 +14,6 @@ void main() {
     location: BannerLocation.bottomStart,
     variables: Configurations().get(),
   );
-  App.init();
+  Init.init();
   runApp(App());
 }

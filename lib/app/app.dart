@@ -28,8 +28,4 @@ class App extends StatelessWidget {
       ),
     );
   }
-
-  static init() {
-    Bindings().dependencies();
-  }
 }
