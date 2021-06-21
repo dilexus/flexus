@@ -5,7 +5,7 @@ import 'dart:async';
 
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../imports.dart';
@@ -109,9 +109,9 @@ class LoginController extends GetxController {
   Future<void> signInWithFacebook() async {
     isLoading.value = true;
     try {
-      final result = await FacebookLogin().logIn(['email']);
+      final LoginResult result = await FacebookAuth.instance.login();
       switch (result.status) {
-        case FacebookLoginStatus.loggedIn:
+        case LoginStatus.success:
           AuthCredential credential = FacebookAuthProvider.credential(result.accessToken.token);
           User user = (await FirebaseAuth.instance.signInWithCredential(credential)).user;
           Util.to.logger().i(user);
@@ -127,14 +127,14 @@ class LoginController extends GetxController {
             }
           }
           break;
-        case FacebookLoginStatus.cancelledByUser:
-          Util.to.logger().e(result.errorMessage);
+        case LoginStatus.cancelled:
+          Util.to.logger().e(result.message);
           isLoading.value = false;
           Get.snackbar(Tr.app_name.val, Trns.error_facebook_sign_in_canceled.val,
               snackPosition: SnackPosition.BOTTOM);
           break;
-        case FacebookLoginStatus.error:
-          Util.to.logger().e(result.errorMessage);
+        case LoginStatus.failed:
+          Util.to.logger().e(result.message);
           isLoading.value = false;
           Get.snackbar(Tr.app_name.val, Trns.error_facebook_sign_in_failed.val,
               snackPosition: SnackPosition.BOTTOM);
