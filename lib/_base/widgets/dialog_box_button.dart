@@ -16,7 +16,7 @@ class DialogBoxButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           primary: Colors.white,
-          onPrimary: Theme.of(Get.context).primaryColor,
+          onPrimary: Theme.of(Get.context!).primaryColor,
           elevation: 0,
         ),
         child: Text(

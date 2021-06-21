@@ -23,7 +23,7 @@ class AuthService extends GetxService {
     return values;
   }
 
-  Future<void> updateUser(String uuid, Gender gender, DateTime dateOfBirth) async {
+  Future<void> updateUser(String? uuid, Gender gender, DateTime? dateOfBirth) async {
     var values = new Map<String, dynamic>();
     if (gender != null) values['gender'] = gender.toShortString();
     if (dateOfBirth != null) values['dateOfBirth'] = dateOfBirth;
@@ -31,7 +31,7 @@ class AuthService extends GetxService {
   }
 
   Future<void> afterLogin() async {
-    User user = FirebaseAuth.instance.currentUser;
+    User user = FirebaseAuth.instance.currentUser!;
     Map<String, dynamic> userData = await AuthService.to.getUser(user.uid);
     if (userData['gender'] != null)
       AuthService.to.authUser.value.gender =

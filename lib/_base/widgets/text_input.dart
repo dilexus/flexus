@@ -3,17 +3,17 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../_base/imports.dart';
 
 class TextInput extends StatelessWidget {
-  final TextEditingController controller;
-  final String name;
-  final String label;
-  final String initialValue;
-  final IconData icon;
-  final bool obscureText;
+  final TextEditingController? controller;
+  final String? name;
+  final String? label;
+  final String? initialValue;
+  final IconData? icon;
+  final bool? obscureText;
   final bool enabled;
-  final FormFieldValidator<String> validator;
+  final FormFieldValidator<String>? validator;
 
   const TextInput(
-      {Key key,
+      {Key? key,
       this.controller,
       this.name,
       this.label,
@@ -30,7 +30,7 @@ class TextInput extends StatelessWidget {
       padding: EdgeInsets.only(top: 8, bottom: 8),
       child: FormBuilderTextField(
         controller: controller,
-        name: name,
+        name: name!,
         initialValue: initialValue,
         enabled: enabled,
         decoration: InputDecoration(
@@ -42,7 +42,7 @@ class TextInput extends StatelessWidget {
               color: enabled ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
             )),
         validator: validator,
-        obscureText: obscureText,
+        obscureText: obscureText!,
       ),
     );
   }

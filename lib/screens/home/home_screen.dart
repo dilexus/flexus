@@ -16,7 +16,7 @@ class HomeScreen extends ScreenMaster<HomeController> {
         body: Container(
           child: Center(
             child: Text(
-              Tr.welcome.trParams({'name': Tr.app_name.val}),
+              Tr.welcome.trParams({'name': Tr.app_name.val})!,
             ),
           ),
         ));

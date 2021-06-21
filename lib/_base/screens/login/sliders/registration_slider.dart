@@ -72,7 +72,7 @@ class RegistrationSlider extends GetView<LoginController> {
                     FormBuilderValidators.maxLength(context, 50),
                     FormBuilderValidators.minLength(context, 8),
                     (val) {
-                      if (_formKey.currentState.fields['password']?.value != val) {
+                      if (_formKey.currentState!.fields['password']?.value != val) {
                         return Trns.warning_passwords_not_matching.val;
                       }
                       return null;
@@ -84,10 +84,10 @@ class RegistrationSlider extends GetView<LoginController> {
                 child: ElevatedButton(
                   child: Text(Trns.sign_up.val),
                   onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      var name = _formKey.currentState.fields['name']?.value;
-                      var email = _formKey.currentState.fields['email']?.value;
-                      var password = _formKey.currentState.fields['password']?.value;
+                    if (_formKey.currentState!.validate()) {
+                      var name = _formKey.currentState!.fields['name']?.value;
+                      var email = _formKey.currentState!.fields['email']?.value;
+                      var password = _formKey.currentState!.fields['password']?.value;
                       controller.signUpWithEmailAndPassword(email, password, name);
                     } else {
                       Util.to.logger().e("Validation Failed");

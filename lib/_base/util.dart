@@ -35,7 +35,7 @@ class Util extends GetxController {
   }
 
   getConfig(String configName) {
-    return FlavorConfig.instance.variables[configName];
+    return FlavorConfig.instance!.variables![configName];
   }
 
   Widget getHomeScreen() {
@@ -43,16 +43,16 @@ class Util extends GetxController {
   }
 
   setAuthUserDetails(AuthUser authUser, User user) {
-    authUser.uuid = user?.uid;
-    authUser.name = user?.displayName;
-    authUser.email = user?.email;
+    authUser.uuid = user.uid;
+    authUser.name = user.displayName;
+    authUser.email = user.email;
     if (user.photoURL == null) {
-      authUser.profilePicture = user?.providerData[0]?.photoURL;
+      authUser.profilePicture = user.providerData[0].photoURL;
     } else {
-      authUser.profilePicture = user?.photoURL;
+      authUser.profilePicture = user.photoURL;
     }
 
-    authUser.isEmailVerified = user?.emailVerified;
+    authUser.isEmailVerified = user.emailVerified;
     switch (user.providerData[0].providerId) {
       case 'facebook.com':
         authUser.authType = AuthType.facebook;
@@ -68,7 +68,7 @@ class Util extends GetxController {
     }
   }
 
-  String getInitials({String string, int limitTo}) {
+  String getInitials({required String string, required int limitTo}) {
     var buffer = StringBuffer();
     var split = string.split(' ');
     if (limitTo > split.length) {
@@ -81,9 +81,9 @@ class Util extends GetxController {
     return buffer.toString();
   }
 
-  Widget getCircularAvatar(String profilePicture, String name, BuildContext context,
-      {File imageFile}) {
-    if (imageFile != null && imageFile?.path != "") {
+  Widget getCircularAvatar(String? profilePicture, String? name, BuildContext? context,
+      {File? imageFile}) {
+    if (imageFile != null && imageFile.path != "") {
       return CircleAvatar(
         backgroundImage: NetworkToFileImage(url: profilePicture, file: imageFile),
         radius: 50,
@@ -100,8 +100,8 @@ class Util extends GetxController {
         radius: 50,
         backgroundColor: Colors.white,
         child: Text(
-          Util.to.getInitials(string: name, limitTo: 2),
-          style: TextStyle(fontSize: 30, color: Theme.of(context).primaryColor),
+          Util.to.getInitials(string: name!, limitTo: 2),
+          style: TextStyle(fontSize: 30, color: Theme.of(context!).primaryColor),
         ),
       );
     }
@@ -113,18 +113,18 @@ class Util extends GetxController {
 
   Map<String, Map<String, String>> getTranslations(
       Map<String, Map<String, String>> map1, Map<String, Map<String, String>> map2) {
-    map1.forEach((c, o) => map1[c].forEach((k, v) => map2[c]?.putIfAbsent(k, () => v)));
+    map1.forEach((c, o) => map1[c]!.forEach((k, v) => map2[c]?.putIfAbsent(k, () => v)));
     return map2;
   }
 
   // Dialog Boxes
 
   void showOKDialog(
-      {String message,
-      String title,
-      String textOK,
-      VoidCallback onOKPressed,
-      Widget content,
+      {required String message,
+      String? title,
+      String? textOK,
+      VoidCallback? onOKPressed,
+      Widget? content,
       bool barrierDismissible = false}) {
     Get.defaultDialog(
         title: title ?? Tr.app_name.val,
@@ -136,13 +136,13 @@ class Util extends GetxController {
   }
 
   void showYesNoDialog(
-      {String message,
-      String title,
-      String textYes,
-      String textNo,
-      VoidCallback onYesPressed,
-      VoidCallback onNoPressed,
-      Widget content,
+      {required String message,
+      String? title,
+      String? textYes,
+      String? textNo,
+      VoidCallback? onYesPressed,
+      VoidCallback? onNoPressed,
+      Widget? content,
       bool barrierDismissible = false}) {
     Get.defaultDialog(
         title: title ?? Tr.app_name.val,
@@ -155,15 +155,15 @@ class Util extends GetxController {
   }
 
   void showYesNoCustomDialog(
-      {String message,
-      String title,
-      String textYes,
-      String textNo,
-      String textCustom,
-      VoidCallback onYesPressed,
-      VoidCallback onNoPressed,
-      VoidCallback onCustomPressed,
-      Widget content,
+      {required String message,
+      String? title,
+      String? textYes,
+      String? textNo,
+      String? textCustom,
+      VoidCallback? onYesPressed,
+      VoidCallback? onNoPressed,
+      VoidCallback? onCustomPressed,
+      Widget? content,
       bool barrierDismissible = false}) {
     Get.defaultDialog(
         title: title ?? Tr.app_name.val,
@@ -183,7 +183,7 @@ class Util extends GetxController {
   }
 
   Build getBuild() {
-    switch (FlavorConfig.instance.name) {
+    switch (FlavorConfig.instance!.name) {
       case "Internal":
         return Build.internal;
       case "Alpha":

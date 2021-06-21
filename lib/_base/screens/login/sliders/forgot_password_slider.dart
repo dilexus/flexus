@@ -47,8 +47,8 @@ class ForgotPasswordSlider extends GetView<LoginController> {
               child: ElevatedButton(
                 child: Text(Trns.reset.val),
                 onPressed: () {
-                  if (_formKey.currentState.validate()) {
-                    var email = _formKey.currentState.fields['email']?.value;
+                  if (_formKey.currentState!.validate()) {
+                    var email = _formKey.currentState!.fields['email']?.value;
                     controller.resetPassword(email);
                   } else {
                     Util.to.logger().e("Validation Failed");

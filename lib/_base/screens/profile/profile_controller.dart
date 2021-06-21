@@ -16,20 +16,20 @@ class ProfileController extends GetxController {
   Rx<File> imageFile = File("").obs;
 
   Future<void> updateProfile(GlobalKey<FormBuilderState> formKey) async {
-    if (formKey.currentState.validate()) {
-      String name = formKey.currentState.fields['name']?.value?.trim();
-      String password = formKey.currentState.fields['password']?.value;
+    if (formKey.currentState!.validate()) {
+      String? name = formKey.currentState!.fields['name']?.value?.trim();
+      String? password = formKey.currentState!.fields['password']?.value;
       Gender gender =
-          formKey.currentState.fields['gender']?.value == "male" ? Gender.male : Gender.female;
-      DateTime dateOfBirth = formKey.currentState.fields['date_of_birth']?.value;
+          formKey.currentState!.fields['gender']?.value == "male" ? Gender.male : Gender.female;
+      DateTime? dateOfBirth = formKey.currentState!.fields['date_of_birth']?.value;
 
-      User user = FirebaseAuth.instance.currentUser..reload();
+      User user = FirebaseAuth.instance.currentUser!..reload();
 
       if (password != null) {
         await user.updatePassword(password);
       }
 
-      if (imageFile?.value != null && imageFile?.value?.path != "") {
+      if (imageFile.value.path != "") {
         var firebaseStorageRef = FirebaseStorage.instance
             .ref()
             .child('user/profile/${AuthService.to.authUser.value.uuid}.jpg');
@@ -39,7 +39,7 @@ class ProfileController extends GetxController {
       }
 
       await user.updateDisplayName(name);
-      user = FirebaseAuth.instance.currentUser
+      user = FirebaseAuth.instance.currentUser!
         ..reload().then((value) {
           AuthService.to.authUser.value.name = name;
           AuthService.to.authUser.value.profilePicture = user.photoURL;

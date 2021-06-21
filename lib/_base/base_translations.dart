@@ -120,12 +120,12 @@ enum Trns {
   error_facebook_sign_in_canceled
 }
 
-extension ExtTr on Trns {
+extension ExtTr on Trns? {
   String get val {
     return this.toString().tr;
   }
 
-  String trParams([Map<String, String> params = const {}]) {
+  String? trParams([Map<String, String> params = const {}]) {
     return this.toString().trParams(params);
   }
 
@@ -139,7 +139,7 @@ extension ExtTrn on Tr {
     return this.toString().tr;
   }
 
-  String trParams([Map<String, String> params = const {}]) {
+  String? trParams([Map<String, String> params = const {}]) {
     return this.toString().trParams(params);
   }
 

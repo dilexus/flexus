@@ -5,10 +5,10 @@ import '../../../../_base/imports.dart';
 import '../login_controller.dart';
 
 class LoginSliderMaster extends GetView<LoginController> {
-  final Widget child;
-  final String title;
-  final Function onBackPressed;
-  const LoginSliderMaster({Key key, this.child, this.title, this.onBackPressed}) : super(key: key);
+  final Widget? child;
+  final String? title;
+  final Function? onBackPressed;
+  const LoginSliderMaster({Key? key, this.child, this.title, this.onBackPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +26,21 @@ class LoginSliderMaster extends GetView<LoginController> {
                       alignment: Alignment.topLeft,
                       child: IconButton(
                         icon: Icon(Icons.arrow_back_rounded),
-                        onPressed: onBackPressed,
+                        onPressed: onBackPressed as void Function()?,
                       ),
                     ),
                   Align(
                     alignment: Alignment.center,
                     heightFactor: 2,
                     child: Text(
-                      title,
+                      title!,
                       style: Theme.of(context).textTheme.headline6,
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 32),
-              child
+              child!
             ],
           ),
         ));

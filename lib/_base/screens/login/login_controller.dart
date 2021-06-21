@@ -20,11 +20,11 @@ class LoginController extends GetxController {
     isLoading.value = true;
     try {
       UserCredential userCredential;
-      final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
       var credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
       );
       userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
       final user = userCredential.user;
@@ -46,7 +46,7 @@ class LoginController extends GetxController {
       isLoading.value = true;
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-      User user = userCredential.user;
+      User? user = userCredential.user;
       Util.to.logger().i("Use sign in was successful with email");
       Util.to.logger().i(user);
       if (user != null) {
@@ -72,14 +72,14 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<void> signUpWithEmailAndPassword(String email, String password, String name) async {
+  Future<void> signUpWithEmailAndPassword(String email, String password, String? name) async {
     isLoading.value = true;
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
-      User user = userCredential.user;
+      User user = userCredential.user!;
       await user.updateDisplayName(name);
-      user = FirebaseAuth.instance.currentUser
+      user = FirebaseAuth.instance.currentUser!
         ..reload().then((value) async {
           Util.to.logger().i("Use sign up was successful with email");
           Util.to.logger().i(user);
@@ -112,8 +112,8 @@ class LoginController extends GetxController {
       final LoginResult result = await FacebookAuth.instance.login();
       switch (result.status) {
         case LoginStatus.success:
-          AuthCredential credential = FacebookAuthProvider.credential(result.accessToken.token);
-          User user = (await FirebaseAuth.instance.signInWithCredential(credential)).user;
+          AuthCredential credential = FacebookAuthProvider.credential(result.accessToken!.token);
+          User? user = (await FirebaseAuth.instance.signInWithCredential(credential)).user;
           Util.to.logger().i(user);
           if (user != null) {
             Util.to.setAuthUserDetails(AuthService.to.authUser.value, user);

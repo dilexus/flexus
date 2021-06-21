@@ -18,15 +18,15 @@ class HomeDrawer extends ScreenMaster<HomeController> {
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Theme.of(Get.context).primaryColor,
+              color: Theme.of(Get.context!).primaryColor,
             ),
             child: Center(
               child: Column(
                 children: [
-                  Util.to.getCircularAvatar(appController?.authUser?.value?.profilePicture,
-                      appController?.authUser?.value?.name, Get.context),
+                  Util.to.getCircularAvatar(appController.authUser.value.profilePicture,
+                      appController.authUser.value.name, Get.context),
                   SizedBox(height: 8),
-                  Text(Trns.welcome_name.trParams({'name': appController?.authUser?.value?.name}),
+                  Text(Trns.welcome_name.trParams({'name': appController.authUser.value.name!})!,
                       style: TextStyle(color: Colors.white))
                 ],
               ),

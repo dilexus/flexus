@@ -1,6 +1,7 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -54,10 +55,10 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
                         children: [
                           Obx(
                             () => Util.to.getCircularAvatar(
-                                AuthService.to?.authUser?.value?.profilePicture,
-                                AuthService.to.authUser?.value?.name,
+                                AuthService.to.authUser.value.profilePicture,
+                                AuthService.to.authUser.value.name,
                                 context,
-                                imageFile: controller?.imageFile?.value),
+                                imageFile: controller.imageFile.value),
                           ),
                           if (AuthService.to.authUser.value.authType == AuthType.email)
                             Padding(
@@ -71,14 +72,14 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   shape: CircleBorder(),
-                                  primary: Theme.of(Get.context).primaryColor,
+                                  primary: Theme.of(Get.context!).primaryColor,
                                 ),
                               ),
                             )
                         ],
                       ),
                       SizedBox(height: 8),
-                      Text(AuthService.to.authUser?.value?.email,
+                      Text(AuthService.to.authUser.value.email!,
                           style: TextStyle(color: Colors.black)),
                       SizedBox(height: 16),
                       /*
@@ -88,7 +89,7 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
                       TextInput(
                           name: 'name',
                           label: Trns.name.val,
-                          initialValue: AuthService.to.authUser?.value?.name,
+                          initialValue: AuthService.to.authUser.value.name,
                           icon: Icons.person_outline,
                           obscureText: false,
                           validator: FormBuilderValidators.compose([
@@ -101,8 +102,8 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
                         label: Trns.date_of_birth.val,
                         inputType: InputType.date,
                         icon: Icons.date_range_outlined,
-                        initialValue: AuthService.to.authUser?.value?.dateOfBirth,
-                        enabled: AuthService.to.authUser?.value?.dateOfBirth != null ? false : true,
+                        initialValue: AuthService.to.authUser.value.dateOfBirth,
+                        enabled: AuthService.to.authUser.value.dateOfBirth != null ? false : true,
                         validator: FormBuilderValidators.compose(
                             [FormBuilderValidators.required(context)]),
                       ),
@@ -135,7 +136,7 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.maxLength(context, 50),
                             (val) {
-                              if (_formKey.currentState.fields['password']?.value != val) {
+                              if (_formKey.currentState!.fields['password']?.value != val) {
                                 return Trns.warning_passwords_not_matching.val;
                               }
                               return null;
@@ -164,14 +165,15 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
   }
 
   Widget _getGenderTextField(BuildContext context) {
-    Gender gender = AuthService.to.authUser?.value?.gender;
+    Gender? gender = AuthService.to.authUser.value.gender;
     var name = "gender";
     var label = Trns.gender.val;
     var hint = Trns.select_the_gender.val;
     var icon = Icons.attribution_outlined;
     var items = ["male", "female"];
     var enabled = gender != null ? false : true;
-    var validator = FormBuilderValidators.compose([FormBuilderValidators.required(context)]);
+    String? Function(dynamic) validator =
+        FormBuilderValidators.compose([FormBuilderValidators.required(context)]);
     if (gender != null) {
       return TextDropdown(
         name: name,
@@ -198,6 +200,7 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
   Future _readPhoto() async {
     Util.to.showOKDialog(
         textOK: Trns.cancel.val,
+        message: "",
         content: Column(
           children: [
             Text("Please select the source"),
@@ -218,7 +221,7 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
                         ),
                         style: ElevatedButton.styleFrom(
                           shape: CircleBorder(),
-                          primary: Theme.of(Get.context).primaryColor,
+                          primary: Theme.of(Get.context!).primaryColor,
                         ),
                       ),
                     ),
@@ -240,7 +243,7 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
                         ),
                         style: ElevatedButton.styleFrom(
                           shape: CircleBorder(),
-                          primary: Theme.of(Get.context).primaryColor,
+                          primary: Theme.of(Get.context!).primaryColor,
                         ),
                       ),
                     ),
@@ -256,8 +259,8 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
 
   _getImage(ImageSource imageSource) async {
     Get.back();
-    final pickedFile = await imagePicker.getImage(source: imageSource);
-    File croppedFile = await ImageCropper.cropImage(
+    final pickedFile = await (imagePicker.getImage(source: imageSource) as FutureOr<PickedFile>);
+    File croppedFile = await (ImageCropper.cropImage(
         sourcePath: pickedFile.path,
         maxWidth: 512,
         maxHeight: 512,
@@ -272,7 +275,7 @@ class ProfileScreen extends ScreenMaster<ProfileController> {
             lockAspectRatio: true),
         iosUiSettings: IOSUiSettings(
           minimumAspectRatio: 1.0,
-        ));
+        )) as FutureOr<File>);
     controller.imageFile.value = File(croppedFile.path);
   }
 }

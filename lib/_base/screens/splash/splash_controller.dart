@@ -11,8 +11,8 @@ import '../login/login_screen.dart';
 class SplashController extends GetxController {
   _startTimer() {
     new Future.delayed(Duration(seconds: Util.to.getConfig("splash_timer_seconds")), () async {
-      FirebaseAuth?.instance?.currentUser?.reload();
-      var user = FirebaseAuth?.instance?.currentUser;
+      FirebaseAuth.instance.currentUser?.reload();
+      var user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         Util.to.setAuthUserDetails(AuthService.to.authUser.value, user);
         if (user.emailVerified) {

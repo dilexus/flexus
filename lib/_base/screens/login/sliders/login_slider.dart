@@ -56,9 +56,9 @@ class LoginSlider extends GetView<LoginController> {
               child: ElevatedButton(
                 child: Text(Trns.sign_in.val),
                 onPressed: () {
-                  if (_formKey.currentState.validate()) {
-                    var email = _formKey.currentState.fields['email']?.value;
-                    var password = _formKey.currentState.fields['password']?.value;
+                  if (_formKey.currentState!.validate()) {
+                    var email = _formKey.currentState!.fields['email']?.value;
+                    var password = _formKey.currentState!.fields['password']?.value;
                     controller.signInWithEmailAndPassword(email, password);
                   } else {
                     Util.to.logger().e("Validation Failed");

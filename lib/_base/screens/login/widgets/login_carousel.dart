@@ -11,8 +11,8 @@ import '../sliders/registration_slider.dart';
 import '../sliders/verify_email_slider.dart';
 
 class LoginCarousel extends GetView<LoginController> {
-  final int initialPage;
-  const LoginCarousel({Key key, this.initialPage}) : super(key: key);
+  final int? initialPage;
+  const LoginCarousel({Key? key, this.initialPage}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
@@ -20,7 +20,7 @@ class LoginCarousel extends GetView<LoginController> {
       options: CarouselOptions(
           height: Get.height,
           viewportFraction: 1,
-          initialPage: initialPage,
+          initialPage: initialPage!,
           scrollPhysics: NeverScrollableScrollPhysics()),
       items: [LoginSlider(), RegistrationSlider(), VerifyEmailSlider(), ForgotPasswordSlider()],
     );

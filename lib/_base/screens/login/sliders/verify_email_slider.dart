@@ -67,7 +67,7 @@ class VerifyEmailSlider extends GetView<LoginController> {
 
   void _callTimer() {
     Timer.periodic(Duration(seconds: 5), (timer) async {
-      FirebaseAuth?.instance?.currentUser?.reload();
+      FirebaseAuth.instance.currentUser!.reload();
       var user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         if (user.emailVerified) {

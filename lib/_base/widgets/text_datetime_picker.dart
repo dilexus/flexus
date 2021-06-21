@@ -4,16 +4,16 @@ import 'package:intl/intl.dart';
 import '../../_base/imports.dart';
 
 class TextDateTimePicker extends StatelessWidget {
-  final String name;
-  final String label;
-  final IconData icon;
-  final DateTime initialValue;
-  final InputType inputType;
+  final String? name;
+  final String? label;
+  final IconData? icon;
+  final DateTime? initialValue;
+  final InputType? inputType;
   final bool enabled;
-  final FormFieldValidator<DateTime> validator;
+  final FormFieldValidator<DateTime>? validator;
 
   const TextDateTimePicker(
-      {Key key,
+      {Key? key,
       this.name,
       this.label,
       this.icon,
@@ -34,12 +34,12 @@ class TextDateTimePicker extends StatelessWidget {
           ),
         ),
         child: FormBuilderDateTimePicker(
-          name: name,
-          inputType: inputType,
+          name: name!,
+          inputType: inputType!,
           format: DateFormat("dd/MM/yyyy"),
           style: TextStyle(
               color: enabled
-                  ? Theme.of(context).textTheme.bodyText1.color
+                  ? Theme.of(context).textTheme.bodyText1!.color
                   : Theme.of(context).disabledColor),
           decoration: InputDecoration(
               labelStyle: TextStyle(
