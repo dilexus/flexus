@@ -4,11 +4,12 @@
 import '../../../../_base/imports.dart';
 import '../login_controller.dart';
 
-class LoginSliderMaster extends GetView<LoginController> {
+class FxLoginSliderMaster extends GetView<FxLoginController> {
   final Widget? child;
   final String? title;
   final Function? onBackPressed;
-  const LoginSliderMaster({Key? key, this.child, this.title, this.onBackPressed}) : super(key: key);
+  const FxLoginSliderMaster({Key? key, this.child, this.title, this.onBackPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

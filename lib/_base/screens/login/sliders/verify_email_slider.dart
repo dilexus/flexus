@@ -12,14 +12,14 @@ import '../login_controller.dart';
 import '../login_screen.dart';
 import '../widgets/login_slider_master.dart';
 
-class VerifyEmailSlider extends GetView<LoginController> {
+class FxVerifyEmailSlider extends GetView<FxLoginController> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
     _callTimer();
     return Obx(
-      () => LoginSliderMaster(
+      () => FxLoginSliderMaster(
         title: Trns.verify_email.val,
         onBackPressed: AuthService.to.isEmailVerified.value
             ? null

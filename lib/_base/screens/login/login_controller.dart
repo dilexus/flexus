@@ -12,7 +12,7 @@ import '../../imports.dart';
 import '../../services/auth_service.dart';
 import 'login_screen.dart';
 
-class LoginController extends GetxController {
+class FxLoginController extends GetxController {
   CarouselController sliderController = CarouselController();
   var isLoading = false.obs;
 

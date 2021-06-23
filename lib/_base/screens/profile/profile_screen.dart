@@ -18,9 +18,9 @@ import '../../../_base/widgets/text_input.dart';
 import '../../services/auth_service.dart';
 import 'profile_controller.dart';
 
-class ProfileScreen extends ScreenMaster<ProfileController> {
+class FxProfileScreen extends ScreenMaster<FxProfileController> {
   final _formKey = GlobalKey<FormBuilderState>();
-  final ProfileController profileController = Get.put(ProfileController());
+  final FxProfileController profileController = Get.put(FxProfileController());
   final imagePicker = ImagePicker();
 
   @override

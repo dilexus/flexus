@@ -10,9 +10,9 @@ import '../sliders/login_slider.dart';
 import '../sliders/registration_slider.dart';
 import '../sliders/verify_email_slider.dart';
 
-class LoginCarousel extends GetView<LoginController> {
+class FxLoginCarousel extends GetView<FxLoginController> {
   final int? initialPage;
-  const LoginCarousel({Key? key, this.initialPage}) : super(key: key);
+  const FxLoginCarousel({Key? key, this.initialPage}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
@@ -22,7 +22,12 @@ class LoginCarousel extends GetView<LoginController> {
           viewportFraction: 1,
           initialPage: initialPage!,
           scrollPhysics: NeverScrollableScrollPhysics()),
-      items: [LoginSlider(), RegistrationSlider(), VerifyEmailSlider(), ForgotPasswordSlider()],
+      items: [
+        FxLoginSlider(),
+        FxRegistrationSlider(),
+        FxVerifyEmailSlider(),
+        FxForgotPasswordSlider()
+      ],
     );
   }
 }

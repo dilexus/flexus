@@ -7,10 +7,10 @@ import '../../../_base/imports.dart';
 import 'login_controller.dart';
 import 'widgets/login_carousel.dart';
 
-class LoginScreen extends ScreenMaster<LoginController> {
+class FxLoginScreen extends ScreenMaster<FxLoginController> {
   final int initialPage;
 
-  LoginScreen(this.initialPage);
+  FxLoginScreen(this.initialPage);
 
   @override
   Widget create() {
@@ -35,7 +35,7 @@ class LoginScreen extends ScreenMaster<LoginController> {
                     child: Obx(() => LoadingOverlay(
                         isLoading: controller.isLoading.value,
                         opacity: 0,
-                        child: LoginCarousel(initialPage: initialPage))),
+                        child: FxLoginCarousel(initialPage: initialPage))),
                   ))
             ],
           ),

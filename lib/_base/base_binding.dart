@@ -12,9 +12,9 @@ import 'util.dart';
 class BaseBindings implements Bindings {
   @override
   void dependencies() {
-    Get.put(SplashController());
+    Get.put(FxSplashController());
     Get.put(AuthService());
     Get.put(Util());
-    Get.put(LoginController());
+    Get.put(FxLoginController());
   }
 }

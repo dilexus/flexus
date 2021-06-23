@@ -36,13 +36,13 @@ class HomeDrawer extends ScreenMaster<HomeController> {
             title: Text(Trns.profile.val),
             onTap: () {
               Get.back();
-              Get.to(() => ProfileScreen());
+              Get.to(() => FxProfileScreen());
             },
           ),
           ListTile(
             title: Text(Trns.logout.val),
             onTap: () {
-              AuthService.to.logout(LoginScreen(LoginSliders.login));
+              AuthService.to.logout(FxLoginScreen(LoginSliders.login));
             },
           ),
         ],

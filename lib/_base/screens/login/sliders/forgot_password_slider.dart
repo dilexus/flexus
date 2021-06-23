@@ -9,11 +9,11 @@ import '../login_controller.dart';
 import '../login_screen.dart';
 import '../widgets/login_slider_master.dart';
 
-class ForgotPasswordSlider extends GetView<LoginController> {
+class FxForgotPasswordSlider extends GetView<FxLoginController> {
   final _formKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
-    return LoginSliderMaster(
+    return FxLoginSliderMaster(
       title: Trns.reset_password.val,
       onBackPressed: () {
         controller.sliderController.jumpToPage(LoginSliders.login);

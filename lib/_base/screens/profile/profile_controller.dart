@@ -11,7 +11,7 @@ import '../../imports.dart';
 import '../../models/auth_user.dart';
 import '../../services/auth_service.dart';
 
-class ProfileController extends GetxController {
+class FxProfileController extends GetxController {
   var isLoading = false.obs;
   Rx<File> imageFile = File("").obs;
 

@@ -41,7 +41,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
-    }
+    }z
 
     buildTypes {
         release {

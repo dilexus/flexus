@@ -4,7 +4,7 @@
 import '../../../_base/imports.dart';
 import 'splash_controller.dart';
 
-class SplashScreen extends ScreenMaster<SplashController> {
+class FxSplashScreen extends ScreenMaster<FxSplashController> {
   @override
   Widget create() {
     return Scaffold(

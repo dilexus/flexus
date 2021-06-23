@@ -24,7 +24,7 @@ class App extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity),
         initialBinding: Bindings(),
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: FxSplashScreen(),
       ),
     );
   }

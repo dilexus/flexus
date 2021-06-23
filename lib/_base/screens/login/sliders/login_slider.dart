@@ -11,12 +11,12 @@ import '../login_controller.dart';
 import '../login_screen.dart';
 import '../widgets/login_slider_master.dart';
 
-class LoginSlider extends GetView<LoginController> {
+class FxLoginSlider extends GetView<FxLoginController> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
-    return LoginSliderMaster(
+    return FxLoginSliderMaster(
       title: Trns.sign_in.val,
       child: Theme(
         data: new ThemeData(

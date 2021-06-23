@@ -9,12 +9,12 @@ import '../login_controller.dart';
 import '../login_screen.dart';
 import '../widgets/login_slider_master.dart';
 
-class RegistrationSlider extends GetView<LoginController> {
+class FxRegistrationSlider extends GetView<FxLoginController> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
-    return LoginSliderMaster(
+    return FxLoginSliderMaster(
         title: Trns.sign_up.val,
         onBackPressed: () {
           controller.sliderController.jumpToPage(LoginSliders.login);

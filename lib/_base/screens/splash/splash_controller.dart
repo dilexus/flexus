@@ -8,7 +8,7 @@ import '../../imports.dart';
 import '../../services/auth_service.dart';
 import '../login/login_screen.dart';
 
-class SplashController extends GetxController {
+class FxSplashController extends GetxController {
   _startTimer() {
     new Future.delayed(Duration(seconds: Util.to.getConfig("splash_timer_seconds")), () async {
       FirebaseAuth.instance.currentUser?.reload();
@@ -21,19 +21,19 @@ class SplashController extends GetxController {
           Util.to.logger().d(user);
         } else {
           await user.sendEmailVerification();
-          Get.off(() => LoginScreen(LoginSliders.verify_email));
+          Get.off(() => FxLoginScreen(LoginSliders.verify_email));
           Util.to.logger().i("User found, email is not verified");
           Util.to.logger().d(user);
         }
       } else {
-        Get.off(() => LoginScreen(LoginSliders.login));
+        Get.off(() => FxLoginScreen(LoginSliders.login));
         Util.to.logger().i("User not found, going to login screen");
       }
     });
   }
 
   navigateOff() {
-    Get.off(() => LoginScreen(LoginSliders.login));
+    Get.off(() => FxLoginScreen(LoginSliders.login));
   }
 
   init() async {
