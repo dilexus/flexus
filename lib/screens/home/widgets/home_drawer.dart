@@ -1,6 +1,7 @@
 // Copyright 2021 Chatura Dilan Perera. All rights reserved.
 // Use of this source code is governed by a MIT license
 
+import '../../../../_base/consts/login_sliders.dart';
 import '../../../_base/imports.dart';
 import '../../../_base/screens/login/login_screen.dart';
 import '../../../_base/screens/profile/profile_screen.dart';

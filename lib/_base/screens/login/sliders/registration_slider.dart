@@ -3,10 +3,10 @@
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import '../../../../_base/consts/login_sliders.dart';
 import '../../../../_base/imports.dart';
 import '../../../../_base/widgets/text_input.dart';
 import '../login_controller.dart';
-import '../login_screen.dart';
 import '../widgets/login_slider_master.dart';
 
 class FxRegistrationSlider extends GetView<FxLoginController> {

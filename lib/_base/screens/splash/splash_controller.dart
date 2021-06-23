@@ -3,6 +3,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../../_base/consts/login_sliders.dart';
 import '../../../app/init.dart';
 import '../../imports.dart';
 import '../../services/auth_service.dart';

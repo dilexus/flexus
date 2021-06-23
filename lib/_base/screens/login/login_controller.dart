@@ -8,9 +8,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../../../_base/consts/login_sliders.dart';
 import '../../imports.dart';
 import '../../services/auth_service.dart';
-import 'login_screen.dart';
 
 class FxLoginController extends GetxController {
   CarouselController sliderController = CarouselController();
